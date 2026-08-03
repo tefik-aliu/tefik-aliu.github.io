@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tefik-aliu.github.io/sitemap.xml
