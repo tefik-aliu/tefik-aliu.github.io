@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Evidence Lab - Tefik Aliu</title>
+  <meta name="description" content="Interactive sample QA audit delivery showing prioritised findings, release readiness, test coverage, Playwright evidence and an honest release decision.">
+  <meta name="theme-color" content="#08111f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="QA Evidence Lab - Tefik Aliu">
+  <meta property="og:description" content="A transparent demonstration of a Release Rescue QA audit delivery.">
+  <meta property="og:url" content="https://tefik-aliu.github.io/qa-evidence-lab.html">
+  <meta property="og:image" content="https://tefik-aliu.github.io/assets/social-preview.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="evidence-lab-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Tefik Aliu portfolio"><span class="brand-mark">TA</span><span>Tefik Aliu</span></a>
+    <button class="menu-button" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
+    <nav id="site-nav" class="site-nav" aria-label="Evidence lab navigation"><a href="#summary">Summary</a><a href="#findings">Findings</a><a href="#coverage">Coverage</a><a href="#automation">Automation</a><a href="release-rescue.html">QA Audit</a></nav>
+  </header>
+
+  <main id="main">
+    <section class="lab-hero section-shell">
+      <div class="case-breadcrumb reveal"><a href="index.html">Portfolio</a><span>/</span><a href="release-rescue.html">Release Rescue</a><span>/</span><span>Sample delivery</span></div>
+      <div class="lab-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow"><span class="status-dot"></span> Interactive demonstration dataset</p>
+          <h1>QA Evidence Lab.<br><span>See the delivery, not just the promise.</span></h1>
+          <p class="case-lead">A transparent sample of the prioritised findings, test coverage, automated evidence and release decision delivered after a fixed-scope QA audit.</p>
+          <div class="hero-actions"><a class="button button-primary" href="#findings">Inspect findings</a><a class="button button-secondary" href="assets/Tefik_Aliu_Sample_QA_Audit_Report.pdf" target="_blank" rel="noopener">Download sample report</a></div>
+          <p class="lab-disclaimer">Fictional product. Demonstration data. No invented client outcomes.</p>
+        </div>
+        <aside class="lab-score-card reveal" id="summary">
+          <div class="lab-score-ring"><div><strong>61</strong><span>/100</span></div></div>
+          <p class="card-label">Release readiness</p><h2>Conditional go</h2>
+          <div class="lab-score-list"><span><i class="blocker"></i>1 blocker</span><span><i class="high"></i>2 high</span><span><i class="medium"></i>2 medium</span><span><i class="low"></i>1 low</span></div>
+          <div class="lab-decision"><small>Decision</small><b>Release blocked by RR-001</b></div>
+        </aside>
+      </div>
+      <div class="case-proof-grid reveal"><article><strong>3</strong><span>critical user journeys</span></article><article><strong>6</strong><span>prioritised findings</span></article><article><strong>5</strong><span>automated checks</span></article><article><strong>1</strong><span>decision-ready report</span></article></div>
+    </section>
+
+    <section id="findings" class="case-section section-shell">
+      <div class="case-section-heading reveal"><p class="eyebrow">01 - Finding register</p><h2>Every issue is connected to impact and a next action.</h2><p>Filter the demonstration findings, then select one to inspect the evidence structure used in a customer delivery.</p></div>
+      <div class="lab-filter reveal" role="group" aria-label="Filter findings"><button class="active" data-filter="all">All 6</button><button data-filter="blocker">Blocker</button><button data-filter="high">High</button><button data-filter="medium">Medium</button><button data-filter="low">Low</button></div>
+      <div class="lab-findings-layout">
+        <div class="lab-findings-list reveal"><button class="lab-finding" data-severity="blocker" data-id="RR-001" data-title="Payment succeeds but account plan remains unchanged" data-flow="Plan upgrade" data-impact="Revenue loss, support load and immediate customer-trust risk." data-observed="The payment API returns success, but the user remains on Starter after refresh." data-action="Block release. Verify state transition, webhook handling and end-to-end reconciliation.">
+  <span class="lab-severity blocker">Blocker</span><b>RR-001</b><strong>Payment succeeds but account plan remains unchanged</strong><small>Plan upgrade</small>
+</button>
+<button class="lab-finding" data-severity="high" data-id="RR-002" data-title="Rapid double-click sends duplicate upgrade requests" data-flow="Plan upgrade" data-impact="Potential duplicate charges or duplicate subscription operations." data-observed="Two POST requests are created before the first response disables the action." data-action="Disable immediately, add idempotency and cover the behaviour in regression automation.">
+  <span class="lab-severity high">High</span><b>RR-002</b><strong>Rapid double-click sends duplicate upgrade requests</strong><small>Plan upgrade</small>
+</button>
+<button class="lab-finding" data-severity="high" data-id="RR-003" data-title="Expired invitation returns unhandled server error" data-flow="Team invitation" data-impact="Users cannot recover and support receives a technical 500 response." data-observed="The API returns 500 and the interface shows a generic failure state." data-action="Return an explicit expired-token response and a clear recovery path.">
+  <span class="lab-severity high">High</span><b>RR-003</b><strong>Expired invitation returns unhandled server error</strong><small>Team invitation</small>
+</button>
+<button class="lab-finding" data-severity="medium" data-id="RR-004" data-title="Sign-in form clears input after server validation" data-flow="Authentication" data-impact="Unnecessary friction and repeated data entry." data-observed="Both fields are cleared after an incorrect-password response." data-action="Preserve the email and focus the password field with a useful error.">
+  <span class="lab-severity medium">Medium</span><b>RR-004</b><strong>Sign-in form clears input after server validation</strong><small>Authentication</small>
+</button>
+<button class="lab-finding" data-severity="medium" data-id="RR-005" data-title="Invoice-download control has no accessible name" data-flow="Billing history" data-impact="Assistive-technology users cannot identify the action reliably." data-observed="The icon-only control exposes no accessible label." data-action="Add a meaningful accessible name and include it in acceptance criteria.">
+  <span class="lab-severity medium">Medium</span><b>RR-005</b><strong>Invoice-download control has no accessible name</strong><small>Billing history</small>
+</button>
+<button class="lab-finding" data-severity="low" data-id="RR-006" data-title="Timezone labels are inconsistent across activity views" data-flow="Account activity" data-impact="Minor interpretation risk for distributed teams." data-observed="One view shows UTC while another uses local time without a label." data-action="Standardise the display and show the timezone explicitly.">
+  <span class="lab-severity low">Low</span><b>RR-006</b><strong>Timezone labels are inconsistent across activity views</strong><small>Account activity</small>
+</button></div>
+        <aside class="lab-detail reveal" aria-live="polite">
+          <div class="lab-detail-head"><span id="detail-severity" class="lab-severity blocker">Blocker</span><b id="detail-id">RR-001</b></div>
+          <h3 id="detail-title">Payment succeeds but account plan remains unchanged</h3>
+          <dl><div><dt>Flow</dt><dd id="detail-flow">Plan upgrade</dd></div><div><dt>Business impact</dt><dd id="detail-impact">Revenue loss, support load and immediate customer-trust risk.</dd></div><div><dt>Observed result</dt><dd id="detail-observed">The payment API returns success, but the user remains on Starter after refresh.</dd></div><div><dt>Recommended action</dt><dd id="detail-action">Block release. Verify state transition, webhook handling and end-to-end reconciliation.</dd></div></dl>
+        </aside>
+      </div>
+    </section>
+
+    <section id="coverage" class="case-section section-shell">
+      <div class="case-section-heading reveal"><p class="eyebrow">02 - Coverage map</p><h2>The selected flows are tested across user behaviour, APIs and regression automation.</h2></div>
+      <div class="lab-coverage reveal">
+        <div class="lab-coverage-head"><span>Journey</span><span>Manual</span><span>API</span><span>Automation</span><span>Result</span></div>
+        <div class="lab-coverage-row"><b>Authentication smoke</b><span class="lab-check pass">Covered</span><span class="lab-check pass">Covered</span><code>auth-smoke.spec.ts</code><em class="pass">PASS</em></div>
+        <div class="lab-coverage-row"><b>Plan upgrade</b><span class="lab-check pass">Covered</span><span class="lab-check pass">Covered</span><code>upgrade-plan.spec.ts</code><em class="blocker">BLOCKED</em></div>
+        <div class="lab-coverage-row"><b>Duplicate request guard</b><span class="lab-check pass">Covered</span><span class="lab-check partial">Partial</span><code>upgrade-idempotency.spec.ts</code><em class="high">FAIL</em></div>
+        <div class="lab-coverage-row"><b>Team invitation</b><span class="lab-check pass">Covered</span><span class="lab-check pass">Covered</span><code>invite-member.spec.ts</code><em class="high">FAIL</em></div>
+        <div class="lab-coverage-row"><b>Invoice accessibility</b><span class="lab-check pass">Covered</span><span class="lab-check neutral">N/A</span><code>billing-accessibility.spec.ts</code><em class="medium">PARTIAL</em></div>
+      </div>
+    </section>
+
+    <section id="automation" class="case-section section-shell">
+      <div class="case-section-heading reveal"><p class="eyebrow">03 - Automated evidence</p><h2>A focused regression check turns the most expensive risk into a repeatable gate.</h2></div>
+      <div class="lab-code-grid">
+        <div class="lab-code reveal"><div class="lab-code-head"><span>upgrade-plan.spec.ts</span><em>Playwright</em></div><pre><code>test('upgraded account shows Pro plan after payment confirmation', async ({ page }) =&gt; {
+  await page.goto('/billing');
+  await page.getByRole('button', { name: 'Upgrade to Pro' }).click();
+  await completeTestPayment(page);
+  await expect(page.getByText('Payment confirmed')).toBeVisible();
+  await page.reload();
+  await expect(page.getByTestId('current-plan')).toHaveText('Pro');
+});</code></pre></div>
+        <div class="lab-run reveal"><div class="lab-run-head"><span>DEMONSTRATION RUN</span><em>5 checks</em></div><ol><li class="pass"><span>✓</span><div><b>Authentication smoke</b><small>1.4s</small></div></li><li class="fail"><span>×</span><div><b>Plan persists after upgrade</b><small>Expected Pro - received Starter</small></div></li><li class="fail"><span>×</span><div><b>Upgrade request is idempotent</b><small>2 POST requests detected</small></div></li><li class="fail"><span>×</span><div><b>Expired invite is recoverable</b><small>Unexpected 500 response</small></div></li><li class="warn"><span>!</span><div><b>Invoice action is accessible</b><small>Missing accessible name</small></div></li></ol></div>
+      </div>
+    </section>
+
+    <section class="case-section section-shell">
+      <div class="next-card reveal"><div><p class="eyebrow">From sample to real delivery</p><h2>Give the next release a decision, not a guess.</h2><p>The real audit uses the customer's authorised environment, selected business-critical flows and written scope. The output follows the evidence structure demonstrated above.</p></div><div class="next-actions"><a class="button button-primary" href="mailto:Tefik.aliu@gmail.com?subject=Release%20Rescue%20QA%20Audit">Request an audit</a><a class="button button-secondary" href="release-rescue.html">Review the service</a><a class="button button-secondary" href="index.html">Back to portfolio</a></div></div>
+    </section>
+  </main>
+  <footer class="site-footer section-shell"><span>© <span id="year"></span> Tefik Aliu</span><span>Demonstration data. Reproducible evidence. Honest limits.</span></footer>
+  <script src="script.js"></script>
+  <script>
+  (() => {
+    const filterButtons = [...document.querySelectorAll('[data-filter]')];
+    const findings = [...document.querySelectorAll('.lab-finding')];
+    const detail = {
+      severity: document.getElementById('detail-severity'), id: document.getElementById('detail-id'), title: document.getElementById('detail-title'), flow: document.getElementById('detail-flow'), impact: document.getElementById('detail-impact'), observed: document.getElementById('detail-observed'), action: document.getElementById('detail-action')
+    };
+    const selectFinding = (button) => {
+      findings.forEach(item => item.classList.toggle('selected', item === button));
+      detail.severity.className = 'lab-severity ' + button.dataset.severity;
+      detail.severity.textContent = button.querySelector('.lab-severity').textContent;
+      detail.id.textContent = button.dataset.id; detail.title.textContent = button.dataset.title; detail.flow.textContent = button.dataset.flow; detail.impact.textContent = button.dataset.impact; detail.observed.textContent = button.dataset.observed; detail.action.textContent = button.dataset.action;
+    };
+    findings.forEach(button => button.addEventListener('click', () => selectFinding(button)));
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      filterButtons.forEach(item => item.classList.toggle('active', item === button));
+      const filter = button.dataset.filter;
+      findings.forEach(item => item.hidden = filter !== 'all' && item.dataset.severity !== filter);
+      const firstVisible = findings.find(item => !item.hidden); if (firstVisible) selectFinding(firstVisible);
+    }));
+    if (findings[0]) selectFinding(findings[0]);
+  })();
+  </script>
+</body>
+</html>

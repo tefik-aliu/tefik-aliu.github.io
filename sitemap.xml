@@ -3,4 +3,9 @@
   <url><loc>https://tefik-aliu.github.io/</loc></url>
   <url><loc>https://tefik-aliu.github.io/service-observability-lab.html</loc></url>
   <url><loc>https://tefik-aliu.github.io/release-rescue.html</loc></url>
+  <url>
+    <loc>https://tefik-aliu.github.io/qa-evidence-lab.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
 </urlset>
