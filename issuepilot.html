@@ -8,7 +8,7 @@
     <meta
       content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
       name="description">
-    <meta content="#111311" name="theme-color">
+    <meta content="#f5f2eb" name="theme-color">
     <link href="https://tefik-aliu.github.io/issuepilot.html" rel="canonical">
     <meta content="website" property="og:type">
     <meta
@@ -21,12 +21,12 @@
       content="https://tefik-aliu.github.io/issuepilot.html"
       property="og:url">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-signature-en.png"
+      content="https://tefik-aliu.github.io/assets/social-personal-en.png"
       property="og:image">
     <meta content="1200" property="og:image:width">
     <meta content="630" property="og:image:height">
     <meta
-      content="Tefik Aliu — Software Engineer. From idea to systems that work."
+      content="Tefik Aliu — Software developer. LinePulse and IssuePilot."
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta
@@ -36,10 +36,10 @@
       content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
       name="twitter:description">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-signature-en.png"
+      content="https://tefik-aliu.github.io/assets/social-personal-en.png"
       name="twitter:image">
-    <link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
-    <link href="styles.css?v=9ef9ef3a7e6d" rel="stylesheet">
+    <link href="assets/favicon.svg?v=1474bed2ae98" rel="icon" type="image/svg+xml">
+    <link href="styles.css?v=105fdf5515b7" rel="stylesheet">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,7 +50,7 @@
         "author": { "@type": "Person", "name": "Tefik Aliu" }
       }
     </script>
-    <script defer="" src="script.js?v=a198b939de59"></script>
+    <script defer src="script.js?v=a198b939de59"></script>
     <link
       href="https://tefik-aliu.github.io/issuepilot.html"
       hreflang="en"
@@ -63,21 +63,21 @@
       href="https://tefik-aliu.github.io/issuepilot.html"
       hreflang="x-default"
       rel="alternate">
-  <link rel="stylesheet" href="signature.css?v=73a4bf8ae2a4">
-<script src="signature.js?v=6483282e8e8a" defer></script>
-</head>
+    <link href="signature.css?v=dd73d764dedc" rel="stylesheet">
+    <script defer src="signature.js?v=60df9ed9895c"></script>
+  </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header shell">
       <a aria-label="Tefik Aliu home" class="brand" href="index.html"
-        >tefik aliu<span aria-hidden="true">.</span></a
+        >Tefik Aliu</a
       >
       <span class="header-role">SOFTWARE ENGINEER</span>
       <button
         aria-controls="site-nav"
         aria-expanded="false"
         class="menu-button"
-        hidden=""
+        hidden
         type="button"
       >
         Menu <span aria-hidden="true">+</span>
@@ -108,8 +108,8 @@
     <main id="main">
       <section class="case-hero shell" id="top">
         <a class="back-link" href="index.html#projects">← Back to projects</a>
-        <p class="eyebrow">ISSUEPILOT / FULL-STACK</p>
-        <h1>The right access.<br>A traceable change<span>.</span></h1>
+        <p class="eyebrow">IssuePilot / full-stack</p>
+        <h1>IssuePilot</h1>
         <div class="case-intro">
           <p>
             From an open CRUD workflow to an issue tracker with an optional
@@ -153,8 +153,8 @@
       </section>
       <section class="section shell case-section">
         <div class="section-head">
-          <p class="eyebrow">01 / BEHAVIOUR</p>
-          <div><h2>Who can change what?</h2></div>
+          <p class="eyebrow">Behaviour</p>
+          <div><h2>Roles and permissions</h2></div>
         </div>
         <div class="case-split">
           <div class="prose">
@@ -199,9 +199,9 @@
       </section>
       <section class="section shell case-section">
         <div class="section-head">
-          <p class="eyebrow">02 / IMPLEMENTATION</p>
+          <p class="eyebrow">Implementation</p>
           <div>
-            <h2>Issue and history.<br>One transaction.</h2>
+            <h2>History in the same transaction</h2>
           </div>
         </div>
         <div class="case-split">
@@ -247,8 +247,8 @@
       </section>
       <section class="section shell case-section">
         <div class="section-head">
-          <p class="eyebrow">03 / ENGINEERING CHOICES</p>
-          <div><h2>Small, explicit boundaries.</h2></div>
+          <p class="eyebrow">Engineering choices</p>
+          <div><h2>Technical decisions</h2></div>
         </div>
         <div class="decision-grid">
           <article class="decision">
@@ -285,9 +285,9 @@
       </section>
       <section class="section shell case-section">
         <div class="section-head">
-          <p class="eyebrow">04 / VERIFICATION</p>
+          <p class="eyebrow">Verification</p>
           <div>
-            <h2>Test the actions<br>that must be denied.</h2>
+            <h2>Testing allowed and denied access</h2>
           </div>
         </div>
         <div class="case-split">

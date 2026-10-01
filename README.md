@@ -4,7 +4,7 @@ A static portfolio at https://tefik-aliu.github.io/. The website connects select
 
 ## Pages
 
-- `index.html` — selected work, engineering capabilities, background and contact.
+- `index.html` — personal introduction, two selected projects, background and contact.
 - `issuepilot.html` — roles, sessions and transactional history case study.
 - `linepulse.html` — event simulation, analytics, reporting and verification case study.
 - `service-observability-lab.html` — service topology, operational contracts and quality gates.
@@ -67,15 +67,15 @@ Public demos are externally hosted and may take time to wake after inactivity.
 
 Every English page has a static `*.sv.html` Swedish counterpart. Language links point to the equivalent page, work without JavaScript and include reciprocal hreflang metadata. `content/sv.json` is the original translation reference; the HTML pages are the current source of truth; generated pages are committed so deployment does not need a build step. Update both language pages when changing content.
 
-The homepage includes three real browser recordings with native controls, no autoplay, on-demand video loading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
+The homepage uses real application screenshots. The LinePulse case study contains its captioned recording; the homepage also retains links to the IssuePilot and observability recordings. Media is fetched only on demand. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
 
 When changing CSS or JavaScript, refresh their content version parameters in all HTML pages. This prevents returning visitors from mixing old assets with new markup.
 
-## Signature design
+## Personal portfolio design
 
-`signature.css` supplies the shared visual layer. `signature.js` progressively enhances the three-project architecture selector, email copying and reading progress. All project panels remain readable without JavaScript. Diagrams are simplified architecture views, not live operational dashboards. Social previews are local 1200 × 630 images in English and Swedish.
+`signature.css` supplies the shared paper-colored palette, editorial typography and compact homepage. The homepage introduces Tefik's industrial background and shows two projects with real screenshots. Technical diagrams and evidence remain on the linked case pages. `signature.js` only enhances email copying; navigation, content, project links and contact work without JavaScript. Social previews are local 1200 × 630 images in both languages.
 
-Run `node scripts/signature-checks.cjs` for keyboard, project switching, clipboard fallback, lazy media and no-JavaScript checks. The test stubs clipboard writes so it does not alter the system clipboard.
+Run `node scripts/signature-checks.cjs` for project navigation, clipboard fallback, stable initial layout and no-JavaScript checks. The test stubs clipboard writes so it does not alter the system clipboard.
 
 ## LinePulse evidence story
 
