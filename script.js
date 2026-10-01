@@ -95,7 +95,10 @@ if (toolbar && filters.length && findings.length && count) {
           severity !== "all" && finding.dataset.severity !== severity;
         if (!finding.hidden) visible += 1;
       });
-      count.textContent = `${visible} ${visible === 1 ? "finding" : "findings"}`;
+      count.textContent =
+        document.documentElement.lang === "sv"
+          ? `${visible} fynd`
+          : `${visible} ${visible === 1 ? "finding" : "findings"}`;
     }),
   );
 }

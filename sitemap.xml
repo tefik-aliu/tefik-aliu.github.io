@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tefik-aliu.github.io/</loc></url>
-  <url><loc>https://tefik-aliu.github.io/linepulse.html</loc></url>
-  <url><loc>https://tefik-aliu.github.io/service-observability-lab.html</loc></url>
-  <url><loc>https://tefik-aliu.github.io/qa-evidence-lab.html</loc></url>
-  <url><loc>https://tefik-aliu.github.io/release-rescue.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/</loc></url>
+<url><loc>https://tefik-aliu.github.io/index.sv.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/linepulse.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/linepulse.sv.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/qa-evidence-lab.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/qa-evidence-lab.sv.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/release-rescue.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/release-rescue.sv.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/service-observability-lab.html</loc></url>
+<url><loc>https://tefik-aliu.github.io/service-observability-lab.sv.html</loc></url>
 </urlset>

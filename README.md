@@ -53,8 +53,7 @@ The browser checks cover six pages at 360, 390, 768, 1024, 1440 and 1920 pixels,
 
 ## Content maintenance
 
-- Update the CV at `assets/Tefik_Aliu_CV.pdf`; the redesign preserves the supplied document.
-- The current PDF uses the older junior/QA headline and should be editorially aligned with the software engineering positioning when the CV is next revised.
+- CVs are available in English and Swedish at `assets/Tefik_Aliu_CV_EN.pdf` and `assets/Tefik_Aliu_CV_SV.pdf`. The original CV URL remains an English alias.
 - All PDFs and the original profile image remain available at their existing paths.
 - When changing page titles or descriptions, also update canonical, Open Graph, Twitter and JSON-LD metadata. Keep `sitemap.xml` in sync with public pages.
 - The social preview is a locally generated 1200 × 630 PNG, with no remote assets.
@@ -62,3 +61,11 @@ The browser checks cover six pages at 360, 390, 768, 1024, 1440 and 1920 pixels,
 - LinePulse uses synthetic data. Observability Lab demonstrates operational patterns, not a production SLO history. QA Evidence Lab uses fictional findings.
 
 Public demos are externally hosted and may take time to wake after inactivity.
+
+## Languages and demonstration media
+
+Every English page has a static `*.sv.html` Swedish counterpart. Language links point to the equivalent page, work without JavaScript and include reciprocal hreflang metadata. `content/sv.json` records the translations used in this release; generated pages are committed so deployment does not need a build step. Update both language pages when changing content.
+
+The homepage includes three real browser recordings with native controls, no autoplay, lazy video loading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
+
+When changing CSS or JavaScript, refresh their content version parameters in all HTML pages. This prevents returning visitors from mixing old assets with new markup.

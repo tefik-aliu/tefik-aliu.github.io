@@ -13,6 +13,7 @@ const pages = [
   "release-rescue.html",
   "404.html",
 ];
+pages.push(...pages.map(file => file.replace(".html", ".sv.html")));
 const widths = [360, 390, 768, 1024, 1440, 1920];
 
 (async () => {
@@ -149,7 +150,7 @@ const widths = [360, 390, 768, 1024, 1440, 1920];
         `No-JS heading: ${file}`,
       );
       assert.ok(await plain.locator("main").isVisible(), `No-JS main: ${file}`);
-      if (file !== "404.html")
+      if (!file.startsWith("404"))
         assert.ok(
           await plain.locator("#site-nav").isVisible(),
           `No-JS nav: ${file}`,

@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="sv">
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>Service Observability Lab — Case Study | Tefik Aliu</title>
+    <title>Service Observability Lab — Fallstudie | Tefik Aliu</title>
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="Service Observability Lab — Fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
       name="description">
     <meta content="#111311" name="theme-color">
     <link
-      href="https://tefik-aliu.github.io/service-observability-lab.html"
+      href="https://tefik-aliu.github.io/service-observability-lab.sv.html"
       rel="canonical">
     <meta content="website" property="og:type">
     <meta
-      content="Service Observability Lab — Case Study | Tefik Aliu"
+      content="Service Observability Lab — Fallstudie | Tefik Aliu"
       property="og:title">
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="Service Observability Lab — Fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
       property="og:description">
     <meta
-      content="https://tefik-aliu.github.io/service-observability-lab.html"
+      content="https://tefik-aliu.github.io/service-observability-lab.sv.html"
       property="og:url">
     <meta
       content="https://tefik-aliu.github.io/assets/social-preview.png"
@@ -32,10 +32,10 @@
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta
-      content="Service Observability Lab — Case Study | Tefik Aliu"
+      content="Service Observability Lab — Fallstudie | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="Service Observability Lab — Fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-preview.png"
@@ -52,7 +52,8 @@
           "@type": "Person",
           "name": "Tefik Aliu",
           "url": "https://tefik-aliu.github.io/"
-        }
+        },
+        "inLanguage": "sv"
       }
     </script>
     <script defer src="script.js?v=a198b939de59"></script>
@@ -70,12 +71,12 @@
       rel="alternate">
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
     <header class="site-header shell">
-      <a aria-label="Tefik Aliu home" class="brand" href="index.html"
+      <a aria-label="Tefik Aliu startsida" class="brand" href="index.sv.html"
         >tefik aliu<span aria-hidden="true">.</span></a
       >
-      <span class="header-role">SOFTWARE ENGINEER</span>
+      <span class="header-role">MJUKVARUUTVECKLARE</span>
       <button
         aria-controls="site-nav"
         aria-expanded="false"
@@ -83,41 +84,41 @@
         hidden
         type="button"
       >
-        Menu <span aria-hidden="true">+</span>
+        Meny<span aria-hidden="true">+</span>
       </button>
-      <nav aria-label="Primary navigation" class="site-nav" id="site-nav">
-        <a data-section="projects" href="index.html#projects">Work</a
-        ><a data-section="engineering" href="index.html#engineering"
-          >Engineering</a
-        ><a data-section="about" href="index.html#about">About</a
-        ><a data-section="contact" href="index.html#contact">Contact</a>
+      <nav aria-label="Huvudnavigation" class="site-nav" id="site-nav">
+        <a data-section="projects" href="index.sv.html#projects">Projekt</a
+        ><a data-section="engineering" href="index.sv.html#engineering"
+          >Teknik</a
+        ><a data-section="about" href="index.sv.html#about">Om mig</a
+        ><a data-section="contact" href="index.sv.html#contact">Kontakt</a>
         <a
           class="nav-cv"
-          href="assets/Tefik_Aliu_CV.pdf"
+          href="assets/Tefik_Aliu_CV_SV.pdf"
           rel="noopener"
           target="_blank"
           >CV <span aria-hidden="true">↗</span></a
         >
         <a
-          aria-label="Läs på svenska"
+          aria-label="Read in English"
           class="language-link"
-          href="service-observability-lab.sv.html"
-          hreflang="sv"
-          lang="sv"
-          >Svenska</a
+          href="service-observability-lab.html"
+          hreflang="en"
+          lang="en"
+          >English</a
         >
       </nav>
     </header>
     <main id="main">
       <section class="case-hero shell" id="top">
-        <a class="back-link" href="index.html#projects">← Selected work</a>
-        <p class="eyebrow">02 / BACKEND &amp; OPERATIONS</p>
+        <a class="back-link" href="index.sv.html#projects">← Utvalda projekt</a>
+        <p class="eyebrow">02 / BACKEND OCH DRIFT</p>
         <h1>Service<br>Observability Lab<span>.</span></h1>
         <div class="case-intro">
           <p>
-            A job-management service designed with operational signals,
-            automated verification and deployment configuration alongside the
-            API.
+            En tjänst för jobbhantering där driftsignaler, automatiserad
+            verifiering och driftsättningskonfiguration utvecklats tillsammans
+            med API:t.
           </p>
           <div class="case-links">
             <a
@@ -125,197 +126,198 @@
               href="https://github.com/tefik-aliu/service-observability-lab"
               rel="noopener noreferrer"
               target="_blank"
-              >Inspect repository<span aria-hidden="true"> ↗</span></a
+              >Granska kodarkivet<span aria-hidden="true"> ↗</span></a
             ><a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/actions"
               rel="noopener noreferrer"
               target="_blank"
-              >CI history<span aria-hidden="true"> ↗</span></a
+              >CI-historik<span aria-hidden="true"> ↗</span></a
             >
           </div>
         </div>
         <dl class="case-meta">
           <div>
-            <dt>Application</dt>
+            <dt>Applikation</dt>
             <dd>FastAPI · SQLAlchemy</dd>
           </div>
           <div>
-            <dt>Persistence</dt>
-            <dd>PostgreSQL / SQLite tests</dd>
+            <dt>Datalagring</dt>
+            <dd>PostgreSQL / SQLite i tester</dd>
           </div>
           <div>
-            <dt>Signals</dt>
-            <dd>Prometheus · OTLP tracing</dd>
+            <dt>Signaler</dt>
+            <dd>Prometheus · OTLP-spårning</dd>
           </div>
           <div>
-            <dt>Delivery</dt>
-            <dd>Docker Compose · Kubernetes manifests</dd>
+            <dt>Leverans</dt>
+            <dd>Docker Compose · Kubernetes-manifest</dd>
           </div>
         </dl>
       </section>
       <section class="section shell case-section" id="architecture">
         <div class="section-head">
-          <p class="eyebrow">01 / ARCHITECTURE</p>
+          <p class="eyebrow">01 / ARKITEKTUR</p>
           <div>
-            <h2>The request is only<br>part of the system.</h2>
+            <h2>Anropet är bara<br>en del av systemet.</h2>
           </div>
         </div>
         <div class="case-split">
           <div class="prose">
-            <h3>The problem</h3>
+            <h3>Problemet</h3>
             <p>
-              An endpoint can return a successful response while the service
-              remains difficult to diagnose. This project adds dependency
-              checks, request metrics and trace instrumentation to a small job
-              API.
+              Ett API kan svara korrekt samtidigt som tjänsten är svår att
+              felsöka. Projektet kompletterar ett litet jobb-API med
+              beroendekontroller, anropsmätvärden och spårning.
             </p>
-            <h3>The implementation</h3>
+            <h3>Implementationen</h3>
             <p>
-              FastAPI handles a queued, running, completed or failed job
-              lifecycle. PostgreSQL stores state in the Compose stack;
-              Prometheus collects metrics, Grafana presents them, and an
-              optional OpenTelemetry exporter sends traces to a collector.
+              FastAPI hanterar jobb med status queued, running, completed eller
+              failed. PostgreSQL lagrar tillstånd i Compose-stacken, Prometheus
+              samlar mätvärden, Grafana visar dem och en valfri
+              OpenTelemetry-exportör skickar spår till en collector.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/docker-compose.yml"
               rel="noopener noreferrer"
               target="_blank"
-              >Compose topology<span aria-hidden="true"> ↗</span></a
+              >Compose-topologi<span aria-hidden="true"> ↗</span></a
             >
           </div>
           <figure class="system-figure">
-            <figcaption><span class="mono">SERVICE TOPOLOGY</span></figcaption>
+            <figcaption><span class="mono">TJÄNSTETOPOLOGI</span></figcaption>
             <div class="system-node">
-              <b>Browser / API client</b><small>Job lifecycle</small>
+              <b>Webbläsare / API-klient</b><small>Jobbets livscykel</small>
             </div>
             <div class="flow-connector">
               <span>HTTP / JSON</span><span aria-hidden="true">↓</span>
             </div>
             <div class="system-node primary-node">
-              <b>FastAPI service</b
-              ><small>Validation · persistence · instrumentation</small>
+              <b>FastAPI-tjänst</b
+              ><small>Validering · datalagring · instrumentering</small>
             </div>
             <div class="flow-connector">
-              <span>Dependencies &amp; signals</span
+              <span>Beroenden och signaler</span
               ><span aria-hidden="true">↓</span>
             </div>
             <div class="system-outputs">
-              <div><b>PostgreSQL</b><small>Job state</small></div>
+              <div><b>PostgreSQL</b><small>Jobbtillstånd</small></div>
               <div><b>Prometheus</b><small>→ Grafana</small></div>
               <div><b>OTLP</b><small>→ Collector</small></div>
             </div>
             <div class="diagram-foot">
-              Topology from the repository’s Docker Compose configuration
+              Topologi från kodarkivets Docker Compose-konfiguration
             </div>
           </figure>
         </div>
       </section>
       <section class="section shell case-section" id="decisions">
         <div class="section-head">
-          <p class="eyebrow">02 / DESIGN DECISIONS</p>
+          <p class="eyebrow">02 / DESIGNVAL</p>
           <div>
-            <h2>Operational behaviour<br>as an explicit contract.</h2>
+            <h2>Driftbeteende<br>som ett tydligt kontrakt.</h2>
           </div>
         </div>
         <div class="decision-grid">
           <article class="decision">
-            <h3>An application factory</h3>
+            <h3>En applikationsfabrik</h3>
             <p>
-              create_app() accepts a database URL. Tests can isolate persistence
-              with SQLite while the container stack uses PostgreSQL.
+              create_app() tar en databasadress. Tester kan isolera
+              datalagringen med SQLite medan containerstacken använder
+              PostgreSQL.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py"
               rel="noopener noreferrer"
               target="_blank"
-              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+              >Granska implementationen<span aria-hidden="true"> ↗</span></a
             >
           </article>
           <article class="decision">
-            <h3>Health and readiness</h3>
+            <h3>Processhälsa och driftberedskap</h3>
             <p>
-              /health identifies a responding process. /ready executes a
-              database query. Kubernetes manifests bind them to separate
-              liveness and readiness probes.
+              /health visar att processen svarar. /ready gör en databasfråga.
+              Kubernetes-manifesten kopplar dem till separata liveness- och
+              readiness-kontroller.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/k8s/app.yaml"
               rel="noopener noreferrer"
               target="_blank"
-              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+              >Granska implementationen<span aria-hidden="true"> ↗</span></a
             >
           </article>
           <article class="decision">
-            <h3>Metrics with application context</h3>
+            <h3>Mätvärden med applikationskontext</h3>
             <p>
-              Request counts and latency are exposed alongside jobs created and
-              jobs by status, connecting HTTP behaviour to service state.
+              Antal anrop och svarstider visas tillsammans med skapade jobb och
+              jobb per status, vilket kopplar HTTP-beteende till tjänstens
+              tillstånd.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/metrics.py"
               rel="noopener noreferrer"
               target="_blank"
-              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+              >Granska implementationen<span aria-hidden="true"> ↗</span></a
             >
           </article>
           <article class="decision">
-            <h3>Tracing behind configuration</h3>
+            <h3>Spårning via konfiguration</h3>
             <p>
-              OTLP export is enabled through an environment variable. Without an
-              endpoint, the service runs without tracing infrastructure.
+              OTLP-export aktiveras med en miljövariabel. Utan en adress körs
+              tjänsten utan infrastruktur för spårning.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/telemetry.py"
               rel="noopener noreferrer"
               target="_blank"
-              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+              >Granska implementationen<span aria-hidden="true"> ↗</span></a
             >
           </article>
         </div>
       </section>
       <section class="section shell case-section" id="quality">
         <div class="section-head">
-          <p class="eyebrow">03 / QUALITY GATES</p>
+          <p class="eyebrow">03 / KVALITETSSPÄRRAR</p>
           <div>
-            <h2>Different boundaries.<br>Different checks.</h2>
+            <h2>Olika gränser.<br>Olika kontroller.</h2>
           </div>
         </div>
         <section aria-label="Quality gates" class="table-wrap" tabindex="0">
           <table>
             <caption class="sr-only">
-              Quality checks and execution
+              Kvalitetskontroller och körning
             </caption>
             <thead>
               <tr>
-                <th scope="col">Gate</th>
-                <th scope="col">Behaviour covered</th>
-                <th scope="col">Execution</th>
+                <th scope="col">Kontroll</th>
+                <th scope="col">Beteende som täcks</th>
+                <th scope="col">Körning</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Ruff + Pytest</th>
                 <td>
-                  Python checks; health, readiness, validation, job lifecycle
-                  and metrics
+                  Python-kontroller; hälsa, driftberedskap, validering,
+                  jobblivscykel och mätvärden
                 </td>
                 <td>GitHub Actions</td>
               </tr>
               <tr>
                 <th scope="row">TypeScript + Playwright</th>
-                <td>Browser workflow and service endpoint checks</td>
+                <td>Webbläsarflöde och kontroller av tjänstens API</td>
                 <td>GitHub Actions</td>
               </tr>
               <tr>
                 <th scope="row">k6</th>
-                <td>Error rate and p95 latency thresholds</td>
-                <td>On demand</td>
+                <td>Gränser för felfrekvens och p95-svarstid</td>
+                <td>Vid behov</td>
               </tr>
             </tbody>
           </table>
@@ -326,33 +328,33 @@
             href="https://github.com/tefik-aliu/service-observability-lab/blob/main/.github/workflows/ci.yml"
             rel="noopener noreferrer"
             target="_blank"
-            >CI workflow<span aria-hidden="true"> ↗</span></a
+            >CI-flöde<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
             href="https://github.com/tefik-aliu/service-observability-lab/blob/main/tests/test_api.py"
             rel="noopener noreferrer"
             target="_blank"
-            >API tests<span aria-hidden="true"> ↗</span></a
+            >API-tester<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
             href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/service.spec.ts"
             rel="noopener noreferrer"
             target="_blank"
-            >Browser tests<span aria-hidden="true"> ↗</span></a
+            >Webbläsartester<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
             href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/load/k6.js"
             rel="noopener noreferrer"
             target="_blank"
-            >Load-test contract<span aria-hidden="true"> ↗</span></a
+            >Lasttestkontrakt<span aria-hidden="true"> ↗</span></a
           >
         </div>
       </section>
       <section class="section shell case-section" id="implementation">
         <div class="section-head">
-          <p class="eyebrow">04 / SOURCE EXCERPT</p>
+          <p class="eyebrow">04 / KODUTDRAG</p>
           <div>
-            <h2>Readiness checks<br>a real dependency.</h2>
+            <h2>Readiness kontrollerar<br>ett verkligt beroende.</h2>
           </div>
         </div>
         <div class="code-proof">
@@ -363,7 +365,7 @@
               href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py#L61-L71"
               rel="noopener noreferrer"
               target="_blank"
-              >Source<span aria-hidden="true"> ↗</span></a
+              >Källkod<span aria-hidden="true"> ↗</span></a
             >
           </div>
           <pre
@@ -379,69 +381,69 @@
         return {"status": "ready", "database": "connected"}</code></pre>
         </div>
         <p class="small-note">
-          Excerpt from app/main.py. A database query is performed before the
-          readiness response is returned.
+          Utdrag ur app/main.py. En databasfråga körs innan svaret om
+          driftberedskap returneras.
         </p>
       </section>
       <section class="section shell case-section" id="limits">
         <div class="section-head">
-          <p class="eyebrow">05 / RESULT &amp; NEXT STEPS</p>
+          <p class="eyebrow">05 / RESULTAT OCH NÄSTA STEG</p>
           <div>
-            <h2>Reproducible integration.<br>Documented boundaries.</h2>
+            <h2>Återskapbar integration.<br>Dokumenterade gränser.</h2>
           </div>
         </div>
         <div class="case-split">
           <div class="prose">
             <p>
-              The repository contains a runnable service, a local observability
-              stack, tests and deployment assets. It demonstrates the
-              integration of application behaviour and operational tooling.
+              Kodarkivet innehåller en körbar tjänst, en lokal
+              observability-stack, tester och driftsättningsfiler. Det visar
+              integrationen mellan applikationsbeteende och driftverktyg.
             </p>
             <p>
-              The collector uses a debug exporter. Persistent trace storage,
-              authentication, migrations, SLO alerting and a staged rollback
-              pipeline remain extensions. Kubernetes manifests are deployment
-              definitions; they do not establish a production operating history.
+              Collectorn använder en debug-exportör. Beständig spårlagring,
+              autentisering, migreringar, SLO-larm och stegvis återställning
+              återstår som utbyggnader. Kubernetes-manifest är
+              driftsättningsdefinitioner, inte bevis på produktionsdrift.
             </p>
           </div>
           <details class="technical-details">
             <summary>
-              Implementation history <span aria-hidden="true">+</span>
+              Implementationshistorik<span aria-hidden="true">+</span>
             </summary>
             <p>
-              The original integration notes record workflow setup, npm cache
-              configuration, Ruff findings and Python import-path fixes. The
-              commit and CI history remain available for inspection.
+              De ursprungliga integrationsnoterna dokumenterar arbetsflöden,
+              npm-cache, Ruff-fynd och korrigeringar av Pythons importsökvägar.
+              Commit- och CI-historiken går att granska.
             </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/commits/main"
               rel="noopener noreferrer"
               target="_blank"
-              >Commit history<span aria-hidden="true"> ↗</span></a
+              >Commit-historik<span aria-hidden="true"> ↗</span></a
             ><a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/actions"
               rel="noopener noreferrer"
               target="_blank"
-              >CI history<span aria-hidden="true"> ↗</span></a
+              >CI-historik<span aria-hidden="true"> ↗</span></a
             >
           </details>
         </div>
       </section>
       <section class="next-project shell">
-        <p class="eyebrow">CONTINUE EXPLORING</p>
-        <a class="next-link" href="linepulse.html"
-          >Explore LinePulse<span aria-hidden="true"> →</span></a
+        <p class="eyebrow">FORTSÄTT UTFORSKA</p>
+        <a class="next-link" href="linepulse.sv.html"
+          >Utforska LinePulse<span aria-hidden="true"> →</span></a
         >
       </section>
     </main>
     <footer class="site-footer shell">
       <span>© <span id="year">2026</span> Tefik Aliu</span
-      ><span>Software engineering / Sweden</span
+      ><span>Mjukvaruutveckling / Sverige</span
       ><a href="https://github.com/tefik-aliu" rel="noopener" target="_blank"
         >GitHub ↗</a
-      ><a href="#top">Back to top ↑</a>
+      ><a href="#top">Till toppen ↑</a>
     </footer>
   </body>
 </html>
