@@ -45,7 +45,7 @@ Browser checks are in `scripts/browser-checks.cjs`. They require Playwright in t
 node scripts/browser-checks.cjs
 ```
 
-The browser checks cover six pages at 360, 390, 768, 1024, 1440 and 1920 pixels, overflow, runtime errors, navigation, keyboard interaction, filtering, no-JavaScript content and reduced motion. Development tools are optional and are not loaded by the website.
+The browser checks cover twelve English/Swedish pages at 360, 390, 768, 1024, 1440 and 1920 pixels, overflow, runtime errors, navigation, keyboard interaction, filtering, no-JavaScript content and reduced motion. Development tools are optional and are not loaded by the website.
 
 ## Deployment
 
@@ -66,6 +66,6 @@ Public demos are externally hosted and may take time to wake after inactivity.
 
 Every English page has a static `*.sv.html` Swedish counterpart. Language links point to the equivalent page, work without JavaScript and include reciprocal hreflang metadata. `content/sv.json` records the translations used in this release; generated pages are committed so deployment does not need a build step. Update both language pages when changing content.
 
-The homepage includes three real browser recordings with native controls, no autoplay, lazy video loading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
+The homepage includes three real browser recordings with native controls, no autoplay, metadata-only video preloading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
 
 When changing CSS or JavaScript, refresh their content version parameters in all HTML pages. This prevents returning visitors from mixing old assets with new markup.
