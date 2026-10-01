@@ -1844,3 +1844,83 @@ caption {
     transition: none !important;
   }
 }
+
+/* Language navigation and real application demonstrations. */
+.language-link {
+  color: var(--accent);
+  white-space: nowrap;
+}
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.demo-card {
+  min-width: 0;
+}
+.demo-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+.demo-card video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1280/900;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.demo-card p,
+.demo-card details {
+  margin-top: 15px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.demo-card summary {
+  cursor: pointer;
+  color: var(--text);
+  padding-block: 8px;
+}
+.demo-card a {
+  display: inline-block;
+  margin-top: 10px;
+}
+.cv-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 15px;
+  font-size: 13px;
+}
+html[lang="sv"] .hero h1 {
+  font-size: clamp(44px, 5.2vw, 76px);
+}
+html[lang="sv"] .capability-row h3 {
+  font-size: 27px;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 1100px) {
+  .header-role {
+    display: none;
+  }
+  .site-nav {
+    gap: 18px;
+  }
+}
+@media (max-width: 820px) {
+  .demo-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .demo-card video {
+    max-width: 650px;
+  }
+}
+@media (max-width: 600px) {
+  html[lang="sv"] .hero h1 {
+    font-size: 38px;
+  }
+  html[lang="sv"] .capability-row h3 {
+    font-size: 20px;
+  }
+}

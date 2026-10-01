@@ -29,7 +29,7 @@ class Document(HTMLParser):
         if len(attrs) != len(attr): self.errors.append(f'Duplicate attribute on {tag}')
         if tag == 'meta': self.meta[attr.get('name', attr.get('property'))] = attr.get('content')
         if tag == 'link' and attr.get('rel') == 'canonical': self.canonical.append(attr.get('href'))
-        for name in ('href', 'src'):
+        for name in ('href', 'src', 'poster'):
             if name in attr: self.links.append(attr[name])
         if tag == 'img' and 'alt' not in attr: self.errors.append('Image missing alt')
         if tag == 'button' and attr.get('type') != 'button': self.errors.append('Button missing explicit type')
@@ -59,7 +59,7 @@ def validate():
         errors.extend(f'{name}: {e}' for e in doc.errors)
         for tag in ('html', 'head', 'body', 'h1', 'main', 'title'):
             if doc.tags[tag] != 1: errors.append(f'{name}: expected one {tag}')
-        if doc.lang != 'en': errors.append(f'{name}: language missing')
+        if doc.lang not in ('en', 'sv'): errors.append(f'{name}: language missing')
         if len(doc.ids) != len(set(doc.ids)): errors.append(f'{name}: duplicate IDs')
         if len(doc.canonical) != 1: errors.append(f'{name}: canonical missing')
         for meta in ('description','viewport','og:title','og:description','og:url','og:image','twitter:card'):
