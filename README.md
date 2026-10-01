@@ -1,29 +1,64 @@
-# Tefik Aliu — Portfolio website
+# Tefik Aliu — Software Engineering Portfolio
 
-Static portfolio website for `https://tefik-aliu.github.io`.
+A static portfolio at https://tefik-aliu.github.io/. The website connects selected systems to their architecture, implementation, tests and deployment configuration.
 
-## Publish
+## Pages
 
-1. Create a public repository named exactly `tefik-aliu.github.io`.
-2. Upload all files and folders from this package to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **GitHub Actions**.
-5. Open **Actions** and wait for the deployment workflow to turn green.
+- `index.html` — selected work, engineering capabilities, background and contact.
+- `linepulse.html` — event simulation, analytics, reporting and verification case study.
+- `service-observability-lab.html` — service topology, operational contracts and quality gates.
+- `qa-evidence-lab.html` — fictional findings, severity filters and native expandable evidence.
+- `release-rescue.html` — supplementary fixed-scope QA service.
+- `404.html` — recovery route for missing pages.
 
-The site will then be available at:
+## Local preview
 
-`https://tefik-aliu.github.io`
+From the repository root, run:
 
-## Contents
+```sh
+python -m http.server 4173
+```
 
-- Responsive one-page portfolio
-- Four project case-study cards
-- Saint-Gobain industrial experience section
-- Current CV under `assets/Tefik_Aliu_CV.pdf`
-- SEO/Open Graph metadata
-- GitHub Pages deployment workflow
-- Accessible navigation and reduced-motion support
+Open http://localhost:4173/. No package installation, compilation or framework is needed.
 
-## Update the CV
+## Design and implementation
 
-Replace `assets/Tefik_Aliu_CV.pdf` with the newest PDF while keeping the same file name.
+- Shared CSS tokens and responsive layouts at 600px, 820px and 1100px.
+- System fonts keep the first render independent of font services and avoid font swaps.
+- Semantic landmarks, visible keyboard focus, a skip link and native `details` controls.
+- Content and mobile navigation remain usable without JavaScript. JavaScript enhances the menu, active navigation and finding filters.
+- Reduced-motion preferences disable smooth scrolling and transitions.
+- Diagrams describe repository architecture; source excerpts are real code, with file and line references. No simulated uptime or CI badges.
+- No analytics, trackers or third-party runtime requests.
+
+## Validation
+
+Run the dependency-free structural and local-link check:
+
+```sh
+python scripts/validate_site.py
+```
+
+Browser checks are in `scripts/browser-checks.cjs`. They require Playwright in the environment and a local HTTP server on port 4173. Set `BROWSER_CHANNEL=msedge` to use installed Edge, or leave it unset for Playwright Chromium.
+
+```sh
+node scripts/browser-checks.cjs
+```
+
+The browser checks cover six pages at 360, 390, 768, 1024, 1440 and 1920 pixels, overflow, runtime errors, navigation, keyboard interaction, filtering, no-JavaScript content and reduced motion. Development tools are optional and are not loaded by the website.
+
+## Deployment
+
+`.github/workflows/deploy-pages.yml` deploys the repository root to GitHub Pages on a push to `main`, or by manual dispatch. Redesign work belongs on a separate branch and is reviewed through a pull request before merging. `.nojekyll` keeps serving static assets straightforward. Pages configuration should use GitHub Actions.
+
+## Content maintenance
+
+- Update the CV at `assets/Tefik_Aliu_CV.pdf`; the redesign preserves the supplied document.
+- The current PDF uses the older junior/QA headline and should be editorially aligned with the software engineering positioning when the CV is next revised.
+- All PDFs and the original profile image remain available at their existing paths.
+- When changing page titles or descriptions, also update canonical, Open Graph, Twitter and JSON-LD metadata. Keep `sitemap.xml` in sync with public pages.
+- The social preview is a locally generated 1200 × 630 PNG, with no remote assets.
+- Recheck linked source excerpts when the project implementations change.
+- LinePulse uses synthetic data. Observability Lab demonstrates operational patterns, not a production SLO history. QA Evidence Lab uses fictional findings.
+
+Public demos are externally hosted and may take time to wake after inactivity.
