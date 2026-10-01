@@ -19,12 +19,12 @@
       content="https://tefik-aliu.github.io/index.sv.html"
       property="og:url">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      content="https://tefik-aliu.github.io/assets/social-signature-sv.png"
       property="og:image">
     <meta content="1200" property="og:image:width">
     <meta content="630" property="og:image:height">
     <meta
-      content="Tefik Aliu — Software Engineer. Build systems. Ship software. Prove it works."
+      content="Tefik Aliu — Mjukvaruutvecklare. Från idé till system som fungerar."
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Tefik Aliu — Mjukvaruutvecklare" name="twitter:title">
@@ -32,7 +32,7 @@
       content="Tefik Aliu bygger API:er, webbapplikationer och automationssystem. Granska projekten, arkitekturen, koden och testerna."
       name="twitter:description">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      content="https://tefik-aliu.github.io/assets/social-signature-sv.png"
       name="twitter:image">
     <link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
     <link href="styles.css?v=9ef9ef3a7e6d" rel="stylesheet">
@@ -70,8 +70,11 @@
       href="https://tefik-aliu.github.io/"
       hreflang="x-default"
       rel="alternate">
-  </head>
-  <body>
+    <link rel="stylesheet" href="signature.css?v=73a4bf8ae2a4">
+    <script src="signature.js?v=6483282e8e8a" defer></script>
+  <noscript><style>.atlas-panel[hidden] { display: block !important; } .atlas-controls { display: none !important; }</style></noscript>
+</head>
+  <body class="portfolio-home">
     <a class="skip-link" href="#main">Hoppa till innehållet</a>
     <header class="site-header shell">
       <a aria-label="Tefik Aliu startsida" class="brand" href="#top"
@@ -110,23 +113,22 @@
       </nav>
     </header>
     <main id="main">
-      <section aria-labelledby="hero-title" class="hero shell" id="top">
+      <section
+        aria-labelledby="hero-title"
+        class="hero shell signature-hero"
+        id="top"
+      >
         <div class="hero-heading">
           <p class="eyebrow">
             <span aria-hidden="true" class="live-dot"></span>TEFIK ALIU /
             MJUKVARUUTVECKLARE
           </p>
           <h1 id="hero-title">
-            Bygg system.<br>Leverera kod.<br><span
-              >Visa att det fungerar.</span
-            >
+            Från idé.<br>Till system<br><span>som fungerar.</span>
           </h1>
-        </div>
-        <div class="hero-aside">
-          <p class="mono muted">FRÅN GRÄNSSNITT TILL INFRASTRUKTUR</p>
           <p class="hero-description">
-            Jag bygger API:er, webbapplikationer och automationssystem med
-            tester, driftsättningsflöden och insyn i driften från början.
+            Jag är Tefik Aliu. Jag bygger mjukvara där gränssnitt, backend och
+            drift hänger ihop — och visar koden bakom.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#projects"
@@ -145,17 +147,145 @@
               >Läs CV ↗</a
             >
           </div>
-          <div class="hero-index">
-            <p class="mono">BÖRJA MED SYSTEMEN</p>
-            <a href="linepulse.sv.html"
-              ><span>01</span>LinePulse<span aria-hidden="true">↗</span></a
-            ><a href="service-observability-lab.sv.html"
-              ><span>02</span>Service Observability Lab<span aria-hidden="true"
-                >↗</span
-              ></a
-            >
-          </div>
         </div>
+        <div class="system-atlas">
+          <div class="atlas-topline">
+            <span class="mono">UTFORSKA ETT SYSTEM</span
+            ><span aria-hidden="true" class="atlas-spark">✳</span>
+          </div>
+          <h2>Tre projekt. Hela kedjan.</h2>
+          <div
+            aria-label="Välj projekt"
+            class="atlas-controls"
+            role="group"
+          >
+            <button
+              aria-controls="atlas-linepulse"
+              aria-pressed="true"
+              data-atlas="linepulse"
+              type="button"
+             disabled>
+              LinePulse</button
+            ><button
+              aria-controls="atlas-issuepilot"
+              aria-pressed="false"
+              data-atlas="issuepilot"
+              type="button"
+             disabled>
+              IssuePilot</button
+            ><button
+              aria-controls="atlas-observability"
+              aria-pressed="false"
+              data-atlas="observability"
+              type="button"
+             disabled>
+              Observability
+            </button>
+          </div>
+          <div
+            class="atlas-panel"
+            data-atlas-panel="linepulse"
+            id="atlas-linepulse"
+          >
+            <div class="atlas-heading">
+              <span class="mono">01 / LINEPULSE</span
+              ><span aria-hidden="true" class="atlas-mark">↗</span>
+            </div>
+            <div aria-label="LinePulse" class="atlas-map" role="group">
+              <div aria-hidden="true" class="atlas-orbit orbit-one"></div>
+              <div aria-hidden="true" class="atlas-orbit orbit-two"></div>
+              <div aria-hidden="true" class="atlas-core">
+                LP<span>ENGINEERING</span>
+              </div>
+              <ol class="atlas-flow">
+                <li>
+                  <span class="flow-number">01</span><b>Scenariosimulator</b>
+                </li>
+                <li>
+                  <span class="flow-number">02</span><b>Analys &amp; API</b>
+                </li>
+                <li>
+                  <span class="flow-number">03</span
+                  ><b>Mätvärden · larm · rapport</b>
+                </li>
+              </ol>
+            </div>
+            <div class="atlas-caption">
+              <p>Lokal simulering · syntetisk data</p>
+              <a href="linepulse.sv.html"
+                >Se hur det är byggt <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </div>
+          <div
+            class="atlas-panel"
+            data-atlas-panel="issuepilot"
+            id="atlas-issuepilot"
+           hidden>
+            <div class="atlas-heading">
+              <span class="mono">02 / ISSUEPILOT</span
+              ><span aria-hidden="true" class="atlas-mark">↗</span>
+            </div>
+            <div aria-label="IssuePilot" class="atlas-map" role="group">
+              <div aria-hidden="true" class="atlas-orbit orbit-one"></div>
+              <div aria-hidden="true" class="atlas-orbit orbit-two"></div>
+              <div aria-hidden="true" class="atlas-core">
+                IP<span>ENGINEERING</span>
+              </div>
+              <ol class="atlas-flow">
+                <li><span class="flow-number">01</span><b>Ärendeändring</b></li>
+                <li>
+                  <span class="flow-number">02</span><b>Session &amp; roll</b>
+                </li>
+                <li>
+                  <span class="flow-number">03</span><b>Ärende + historik</b>
+                </li>
+              </ol>
+            </div>
+            <div class="atlas-caption">
+              <p>Privat läge · en arbetsyta</p>
+              <a href="issuepilot.sv.html"
+                >Se hur det är byggt <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </div>
+          <div
+            class="atlas-panel"
+            data-atlas-panel="observability"
+            id="atlas-observability"
+           hidden>
+            <div class="atlas-heading">
+              <span class="mono">03 / OBSERVABILITY</span
+              ><span aria-hidden="true" class="atlas-mark">↗</span>
+            </div>
+            <div aria-label="Observability" class="atlas-map" role="group">
+              <div aria-hidden="true" class="atlas-orbit orbit-one"></div>
+              <div aria-hidden="true" class="atlas-orbit orbit-two"></div>
+              <div aria-hidden="true" class="atlas-core">
+                SL<span>ENGINEERING</span>
+              </div>
+              <ol class="atlas-flow">
+                <li><span class="flow-number">01</span><b>Jobbanrop</b></li>
+                <li>
+                  <span class="flow-number">02</span
+                  ><b>FastAPI &amp; PostgreSQL</b>
+                </li>
+                <li>
+                  <span class="flow-number">03</span
+                  ><b>Mätvärden · spårning · beredskap</b>
+                </li>
+              </ol>
+            </div>
+            <div class="atlas-caption">
+              <p>Valfri OTLP-spårning</p>
+              <a href="service-observability-lab.sv.html"
+                >Se hur det är byggt <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </div>
+          <p class="atlas-foot mono">ARKITEKTUR / FÖRENKLAD ÖVERSIKT</p>
+        </div>
+
         <div class="hero-bottom">
           <span>BACKEND · FULLSTACK · AUTOMATION</span
           ><span
@@ -166,6 +296,19 @@
           >
         </div>
       </section>
+      <div class="review-routes shell">
+        <p class="mono">DITT NÄSTA STEG</p>
+        <a href="#projects"
+          ><span>Se vad jag bygger</span
+          ><small>Projekt, fungerande demos och kod →</small></a
+        ><a href="#about"
+          ><span>Lär känna mig</span
+          ><small>Bakgrund, arbetssätt och CV →</small></a
+        ><a href="#contact"
+          ><span>Prata om en roll</span
+          ><small>Backend, fullstack och automation →</small></a
+        >
+      </div>
       <section class="section shell" id="projects">
         <div class="section-head">
           <p class="eyebrow">01 / UTVALDA PROJEKT</p>
@@ -230,42 +373,81 @@
               >
             </div>
           </div>
-          <figure class="system-figure">
+          <figure class="product-preview">
+            <div class="preview-bar">
+              <span aria-hidden="true">● ● ●</span
+              ><span>LINEPULSE / APPLICATION</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <a aria-label="Utforska LinePulse" href="linepulse.sv.html"
+              ><img
+                alt="LinePulse med scenarioverktyg och simulerade produktionsmått"
+                decoding="async"
+                height="900"
+                loading="lazy"
+                src="assets/demos/linepulse.png"
+                width="1280"></a>
             <figcaption>
-              <span class="mono">SYSTEMÖVERSIKT / LINEPULSE</span
-              ><span class="diagram-label">Syntetisk data</span>
+              <span>Faktisk applikation · exempeldata</span
+              ><span>01 / FULLSTACK</span>
             </figcaption>
-            <div class="system-node source-node">
-              <span aria-hidden="true" class="node-icon">↳</span>
-              <div>
-                <b>Scenariosimulator</b
-                ><small>Tryckdrift · mikrostopp · beroendefel</small>
-              </div>
-            </div>
-            <div class="flow-connector">
-              <span>Produktionshändelser</span><span aria-hidden="true">↓</span>
-            </div>
-            <div class="system-node primary-node">
-              <span aria-hidden="true" class="node-icon">{ }</span>
-              <div>
-                <b>FastAPI + SQLAlchemy</b
-                ><small>Lagra → analysera → förklara</small>
-              </div>
-            </div>
-            <div class="flow-connector">
-              <span>Typade anrop / beräknat underlag</span
-              ><span aria-hidden="true">↓</span>
-            </div>
-            <div class="system-outputs">
-              <div><b>Översikt</b><small>Nyckeltal + larm</small></div>
-              <div><b>Arbetsbok</b><small>XLSX-rapport</small></div>
-              <div><b>Driftkontroller</b><small>Hälsa + mätvärden</small></div>
-            </div>
-            <div class="diagram-foot">
-              <span>Verifierat i kod</span
-              ><span>Python · API · webbläsartester</span>
-            </div>
           </figure>
+        </article>
+        <article aria-labelledby="access-feature-title" class="access-feature">
+          <div class="access-visual">
+            <div class="preview-bar">
+              <span class="mono">ISSUEPILOT / ACCESS MODEL</span
+              ><span aria-hidden="true">↗</span>
+            </div>
+            <div class="access-grid">
+              <div class="access-role">
+                <span aria-hidden="true" class="role-symbol">◉</span
+                ><b>Viewer</b><small>Läsa</small>
+              </div>
+              <div class="access-role">
+                <span aria-hidden="true" class="role-symbol">⌘</span
+                ><b>Editor</b><small>Skapa &amp; ändra</small>
+              </div>
+              <div class="access-role">
+                <span aria-hidden="true" class="role-symbol">✳</span><b>Admin</b
+                ><small>Även ta bort</small>
+              </div>
+            </div>
+            <div class="access-event">
+              <span aria-hidden="true">↳</span>
+              <div>
+                <b>Varje ändring lämnar ett spår.</b>
+                <p>Aktör, tid och tillstånd före och efter.</p>
+              </div>
+            </div>
+            <p class="mono access-note">FÖRENKLAD MODELL / PRIVAT LÄGE</p>
+          </div>
+          <div class="project-body">
+            <div class="project-meta">
+              <span>02 / ISSUEPILOT</span><span>FULLSTACK + ACCESS</span>
+            </div>
+            <h3 id="access-feature-title">Rätt åtkomst.<br>Full historik.</h3>
+            <p class="project-deck">
+              Ett ärendesystem med genomtänkta gränser.
+            </p>
+            <p>
+              Inloggning och tre roller för privata installationer. Historik som
+              sparas i samma transaktion som ändringen. En öppen demo som är
+              enkel att prova.
+            </p>
+            <p class="stack-line">FastAPI / SQLite / JavaScript / Playwright</p>
+            <div class="project-actions">
+              <a class="button primary" href="issuepilot.sv.html"
+                >Utforska systemet <span aria-hidden="true">→</span></a
+              ><a
+                class="text-link"
+                href="https://issuepilot-tefik.onrender.com"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Öppna demo ↗</a
+              >
+            </div>
+          </div>
         </article>
         <article
           aria-labelledby="observability-title"
@@ -273,7 +455,7 @@
         >
           <div class="project-body">
             <div class="project-meta">
-              <span>02 / TEKNISK FALLSTUDIE</span><span>BACKEND + DRIFT</span>
+              <span>03 / TEKNISK FALLSTUDIE</span><span>BACKEND + DRIFT</span>
             </div>
             <h3 id="observability-title">
               Service<br>Observability Lab<span class="title-dot">.</span>
@@ -318,14 +500,17 @@
               <pre
                 aria-label="Kodutdrag ur app/main.py"
                 tabindex="0"
-              ><code>    @app.get("/health")
+              ><code>    @app.get(&quot;/health&quot;)
     def health() -&gt; dict[str, str]:
-        return {"status": "ok", "service": "service-observability-lab"}
+        return {&quot;status&quot;: &quot;ok&quot;, &quot;service&quot;: &quot;service-observability-lab&quot;}
 
-    @app.get("/ready")
+    @app.get(&quot;/ready&quot;)
     def readiness(db: Session = db_dependency) -&gt; dict[str, str]:
-        db.execute(text("SELECT 1"))
-        return {"status": "ready", "database": "connected"}</code></pre>
+        try:
+            db.execute(text(&quot;SELECT 1&quot;))
+        except SQLAlchemyError as exc:
+            raise HTTPException(status_code=503, detail=&quot;Database unavailable&quot;) from exc
+        return {&quot;status&quot;: &quot;ready&quot;, &quot;database&quot;: &quot;connected&quot;}</code></pre>
             </div>
             <p class="proof-caption">
               Readiness frågar databasen. Liveness kontrollerar processen. Läs
@@ -345,45 +530,7 @@
             <h3>Fler teknikprojekt</h3>
             <span class="mono">APPLIKATIONER / AUTOMATION / VERKTYG</span>
           </div>
-          <article class="project-row">
-            <span class="row-number">03</span>
-            <div>
-              <p class="eyebrow">Fullstackapplikation</p>
-              <h3>IssuePilot</h3>
-            </div>
-            <div>
-              <p>
-                Ärendehantering med valbart privat läge, tre behörighetsroller
-                och transaktionell ändringshistorik. Publik demo med
-                exempeldata.
-              </p>
-              <p class="stack-line">FastAPI / SQLite / JavaScript</p>
-              <div class="inline-links">
-                <a class="text-link" href="issuepilot.sv.html"
-                  >Läs fallstudien <span aria-hidden="true">→</span></a
-                >
-                <a
-                  class="text-link"
-                  href="https://issuepilot-tefik.onrender.com"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >Öppna demo<span aria-hidden="true"> ↗</span></a
-                ><a
-                  class="text-link"
-                  href="https://github.com/tefik-aliu/issuepilot"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >Kodarkiv<span aria-hidden="true"> ↗</span></a
-                ><a
-                  class="text-link"
-                  href="https://github.com/tefik-aliu/issuepilot/blob/main/app/main.py"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  >API-implementation<span aria-hidden="true"> ↗</span></a
-                >
-              </div>
-            </div>
-          </article>
+
           <article class="project-row">
             <span class="row-number">04</span>
             <div>
@@ -503,7 +650,7 @@
               aria-label="LinePulse — Inspelad demonstration"
               controls
               poster="assets/demos/linepulse.png"
-              preload="metadata"
+              preload="none"
             >
               <source src="assets/demos/linepulse.webm" type="video/webm">
               <a href="assets/demos/linepulse.webm">Öppna videofilen</a>
@@ -523,7 +670,7 @@
               aria-label="IssuePilot — Inspelad demonstration"
               controls
               poster="assets/demos/issuepilot.png"
-              preload="metadata"
+              preload="none"
             >
               <source src="assets/demos/issuepilot.webm" type="video/webm">
               <a href="assets/demos/issuepilot.webm">Öppna videofilen</a>
@@ -542,7 +689,7 @@
               aria-label="Service Observability Lab — Inspelad demonstration"
               controls
               poster="assets/demos/observability.png"
-              preload="metadata"
+              preload="none"
             >
               <source src="assets/demos/observability.webm" type="video/webm">
               <a href="assets/demos/observability.webm">Öppna videofilen</a>
@@ -647,13 +794,22 @@
           </p>
         </div>
       </section>
-      <section class="section shell about-section" id="about">
+      <section class="section shell about-section editorial-about" id="about">
         <span class="anchor-alias" id="experience"></span>
         <div class="section-head">
           <p class="eyebrow">03 / OM MIG</p>
           <div>
             <h2>Mjukvaruutveckling.<br>Med systemperspektiv.</h2>
           </div>
+        </div>
+        <div class="background-statement">
+          <span class="experience-number">20<span>+</span></span>
+          <div>
+            <p class="eyebrow">ÅR I INDUSTRIN</p>
+            <p>Produktionsvana.<br>Utvecklarens nyfikenhet.</p>
+            <small>Saint-Gobain · glasproduktion</small>
+          </div>
+          <span aria-hidden="true" class="background-monogram">ta.</span>
         </div>
         <div class="about-grid">
           <p class="about-lead">
@@ -717,6 +873,16 @@
             <a class="contact-email" href="mailto:Tefik.aliu@gmail.com"
               >Tefik.aliu@gmail.com<span aria-hidden="true"> →</span></a
             >
+            <div class="copy-contact">
+              <button
+                class="copy-email"
+                data-copy-email="Tefik.aliu@gmail.com"
+                hidden
+                type="button"
+              >
+                Kopiera e-postadress <span aria-hidden="true">↗</span></button
+              ><span class="copy-status" role="status"></span>
+            </div>
             <div class="inline-links">
               <a class="text-link" href="assets/Tefik_Aliu_CV_SV.pdf"
                 >CV<span aria-hidden="true"> ↗</span></a
