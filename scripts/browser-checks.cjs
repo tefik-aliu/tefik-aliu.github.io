@@ -36,6 +36,11 @@ const widths = [360, 390, 768, 1024, 1440, 1920];
       for (const file of pages) {
         const response = await page.goto(`${baseURL}/${file}`);
         assert.equal(response.status(), 200, file);
+        // Verify below-fold image URLs too, without treating deferred loading as a failure.
+        await page.locator('img').evaluateAll(images => Promise.all(images.map(image => {
+          image.loading = 'eager';
+          return image.decode().catch(() => {});
+        })));
         const state = await page.evaluate(() => ({
           width: document.documentElement.clientWidth,
           scroll: document.documentElement.scrollWidth,

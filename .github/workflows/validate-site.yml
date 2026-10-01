@@ -22,4 +22,36 @@ jobs:
       - name: Validate structure, metadata and local links
         run: python scripts/validate_site.py
       - name: Check JavaScript syntax
-        run: node --check script.js
+        run: |
+          node --check script.js
+          node --check signature.js
+
+  browser-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install development-only browser tools
+        run: |
+          npm install --no-save --package-lock=false playwright@1.62.1 axe-core@4.13.0
+          npx playwright install --with-deps chromium
+      - name: Start static preview
+        run: |
+          python -m http.server 4173 --bind 127.0.0.1 > /tmp/portfolio-preview.log 2>&1 &
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Check layouts, accessibility and interactions
+        env:
+          BASE_URL: http://127.0.0.1:4173
+          AXE_PATH: node_modules/axe-core/axe.min.js
+        run: |
+          node scripts/browser-checks.cjs
+          node scripts/signature-checks.cjs

@@ -5,6 +5,7 @@ A static portfolio at https://tefik-aliu.github.io/. The website connects select
 ## Pages
 
 - `index.html` — selected work, engineering capabilities, background and contact.
+- `issuepilot.html` — roles, sessions and transactional history case study.
 - `linepulse.html` — event simulation, analytics, reporting and verification case study.
 - `service-observability-lab.html` — service topology, operational contracts and quality gates.
 - `qa-evidence-lab.html` — fictional findings, severity filters and native expandable evidence.
@@ -45,7 +46,7 @@ Browser checks are in `scripts/browser-checks.cjs`. They require Playwright in t
 node scripts/browser-checks.cjs
 ```
 
-The browser checks cover twelve English/Swedish pages at 360, 390, 768, 1024, 1440 and 1920 pixels, overflow, runtime errors, navigation, keyboard interaction, filtering, no-JavaScript content and reduced motion. Development tools are optional and are not loaded by the website.
+The browser checks cover fourteen English/Swedish pages at 360, 390, 768, 1024, 1440 and 1920 pixels, overflow, runtime errors, navigation, keyboard interaction, filtering, no-JavaScript content and reduced motion. Development tools are optional and are not loaded by the website.
 
 ## Deployment
 
@@ -64,8 +65,14 @@ Public demos are externally hosted and may take time to wake after inactivity.
 
 ## Languages and demonstration media
 
-Every English page has a static `*.sv.html` Swedish counterpart. Language links point to the equivalent page, work without JavaScript and include reciprocal hreflang metadata. `content/sv.json` records the translations used in this release; generated pages are committed so deployment does not need a build step. Update both language pages when changing content.
+Every English page has a static `*.sv.html` Swedish counterpart. Language links point to the equivalent page, work without JavaScript and include reciprocal hreflang metadata. `content/sv.json` is the original translation reference; the HTML pages are the current source of truth; generated pages are committed so deployment does not need a build step. Update both language pages when changing content.
 
-The homepage includes three real browser recordings with native controls, no autoplay, metadata-only video preloading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
+The homepage includes three real browser recordings with native controls, no autoplay, on-demand video loading and written walkthroughs. Posters and videos live in `assets/demos/`. The recordings use local demonstration data; the observability recording uses SQLite and does not show the full Compose monitoring stack.
 
 When changing CSS or JavaScript, refresh their content version parameters in all HTML pages. This prevents returning visitors from mixing old assets with new markup.
+
+## Signature design
+
+`signature.css` supplies the shared visual layer. `signature.js` progressively enhances the three-project architecture selector, email copying and reading progress. All project panels remain readable without JavaScript. Diagrams are simplified architecture views, not live operational dashboards. Social previews are local 1200 × 630 images in English and Swedish.
+
+Run `node scripts/signature-checks.cjs` for keyboard, project switching, clipboard fallback, lazy media and no-JavaScript checks. The test stubs clipboard writes so it does not alter the system clipboard.
