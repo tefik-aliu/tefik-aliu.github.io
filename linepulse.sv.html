@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>LinePulse — Teknisk fallstudie | Tefik Aliu</title>
     <meta
-      content="LinePulse — Teknisk fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
+      content="Från simulerad tryckdrift till förklarbart larm och skiftrapport. Se en inspelad demo, tekniska avvägningar och reproducerbara testresultat."
       name="description">
     <meta content="#111311" name="theme-color">
     <link
@@ -17,7 +17,7 @@
       content="LinePulse — Teknisk fallstudie | Tefik Aliu"
       property="og:title">
     <meta
-      content="LinePulse — Teknisk fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
+      content="Från simulerad tryckdrift till förklarbart larm och skiftrapport. Se en inspelad demo, tekniska avvägningar och reproducerbara testresultat."
       property="og:description">
     <meta
       content="https://tefik-aliu.github.io/linepulse.sv.html"
@@ -35,7 +35,7 @@
       content="LinePulse — Teknisk fallstudie | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="LinePulse — Teknisk fallstudie. Implementation, tekniska val och verifiering i Tefik Alius portfolio."
+      content="Från simulerad tryckdrift till förklarbart larm och skiftrapport. Se en inspelad demo, tekniska avvägningar och reproducerbara testresultat."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-signature-sv.png"
@@ -46,8 +46,8 @@
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "LinePulse — System Case Study | Tefik Aliu",
-        "url": "https://tefik-aliu.github.io/linepulse.html",
+        "name": "LinePulse — Teknisk fallstudie | Tefik Aliu",
+        "url": "https://tefik-aliu.github.io/linepulse.sv.html",
         "author": {
           "@type": "Person",
           "name": "Tefik Aliu",
@@ -69,9 +69,10 @@
       href="https://tefik-aliu.github.io/linepulse.html"
       hreflang="x-default"
       rel="alternate">
-  <link rel="stylesheet" href="signature.css?v=73a4bf8ae2a4">
-<script src="signature.js?v=6483282e8e8a" defer></script>
-</head>
+    <link href="signature.css?v=73a4bf8ae2a4" rel="stylesheet">
+    <script defer src="signature.js?v=6483282e8e8a"></script>
+    <link rel="stylesheet" href="linepulse-case.css?v=4f0e8b2f292b">
+  </head>
   <body>
     <a class="skip-link" href="#main">Hoppa till innehållet</a>
     <header class="site-header shell">
@@ -118,9 +119,9 @@
         <h1>LinePulse<span>.</span></h1>
         <div class="case-intro">
           <p>
-            En simuleringsplattform som omvandlar händelsedata till mätvärden,
-            förklarbara larm och rapporter. Tekniken omfattar webbläsare, API,
-            databas, analys och verifiering.
+            Små driftstörningar kan döljas i en totalsiffra. LinePulse visar hur
+            en förändring i processen blir synlig i data — och hur ett larm kan
+            visa underlaget bakom rekommendationen.
           </p>
           <div class="case-links">
             <a
@@ -162,6 +163,78 @@
             <dd>Syntetisk produktionsdata</dd>
           </div>
         </dl>
+        <nav aria-label="På den här sidan" class="case-jump-links">
+          <a href="#demo">Se demon <span aria-hidden="true">↘</span></a
+          ><a href="#architecture"
+            >Arkitektur <span aria-hidden="true">↘</span></a
+          ><a href="#decisions"
+            >Tekniska val <span aria-hidden="true">↘</span></a
+          ><a href="#evidence"
+            >Testresultat <span aria-hidden="true">↘</span></a
+          >
+        </nav>
+      </section>
+      <section
+        aria-labelledby="demo-title"
+        class="section shell case-section case-demo"
+        id="demo"
+      >
+        <div class="section-head">
+          <p class="eyebrow">SE SYSTEMET ARBETA</p>
+          <div>
+            <h2 id="demo-title">Från tryckdrift<br>till nästa åtgärd.</h2>
+            <p>En kort, textad inspelning från den faktiska applikationen.</p>
+          </div>
+        </div>
+        <div class="case-demo-grid">
+          <figure>
+            <video
+              aria-label="LinePulse: tryckdrift, larm och skiftrapport"
+              controls
+              poster="assets/demos/linepulse-evidence.png"
+              preload="none"
+            >
+              <source
+                src="assets/demos/linepulse-story.webm"
+                type="video/webm">
+              <track
+                default
+                kind="captions"
+                label="Svenska"
+                src="assets/demos/linepulse-story.sv.vtt"
+                srclang="sv">
+              <a href="assets/demos/linepulse-story.webm">Öppna videofilen</a>
+            </video>
+            <figcaption>
+              Lokal demo med syntetisk data. Händelserna stegas fram snabbare
+              via API:t för att visa förloppet kortfattat. Utan ljud.
+            </figcaption>
+          </figure>
+          <div class="demo-walkthrough">
+            <h3>Det här ser du</h3>
+            <ol>
+              <li>
+                <b>Utgångsläge</b>
+                <p>Webbpanelen visar nyckeltal och tillgängliga scenarier.</p>
+              </li>
+              <li>
+                <b>Pressure drift</b>
+                <p>Scenariot ändras och nya simulerade händelser skapas.</p>
+              </li>
+              <li>
+                <b>Larm med underlag</b>
+                <p>Larmet visar tryck, kassation och en föreslagen kontroll.</p>
+              </li>
+              <li>
+                <b>Rapport</b>
+                <p>
+                  Skiftrapporten laddas ned som XLSX från samma lagrade
+                  händelser.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
       </section>
       <section class="section shell case-section" id="architecture">
         <div class="section-head">
@@ -172,6 +245,13 @@
         </div>
         <div class="case-split">
           <div class="prose">
+            <h3>Varför jag byggde det</h3>
+            <p>
+              Min bakgrund är över 20 år i glasproduktion på Saint-Gobain. Det
+              gör frågor om små stopp, kassation och tydliga felsökningsunderlag
+              konkreta för mig. LinePulse är mitt fristående utvecklingsprojekt
+              för att utforska dem med kod — utan fabriksdata.
+            </p>
             <h3>Problemet</h3>
             <p>
               Råa händelser förklarar inte varför utfallet ändras. Ett
@@ -250,6 +330,12 @@
               driftsättningsalternativ, inte ett påstående om live-demots
               databas.
             </p>
+            <p class="decision-tradeoff">
+              <strong>Avvägning:</strong> En extern databastjänst skulle ge fler
+              driftmöjligheter men också fler beroenden vid lokal uppstart. Den
+              här demon prioriterar enkel reproduktion; fleranvändardrift kräver
+              mer än att byta anslutningssträng.
+            </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/app/database.py"
@@ -263,6 +349,12 @@
             <p>
               Tryckdrift och klustrade stopp utvärderas med uttryckliga villkor.
               Larmen visar underlaget i stället för svårtolkade säkerhetspoäng.
+            </p>
+            <p class="decision-tradeoff">
+              <strong>Avvägning:</strong> En statistisk modell skulle kräva
+              representativ data och separat utvärdering. Reglerna här är
+              inspekterbara, men trösklarna är demonstrationsvärden och bevisar
+              inte orsakssamband.
             </p>
             <a
               class="text-link"
@@ -278,6 +370,12 @@
               Ett scenario med beroendefel får readiness att svara HTTP 503.
               Liveness förblir en separat processkontroll.
             </p>
+            <p class="decision-tradeoff">
+              <strong>Avvägning:</strong> En enda hälsokontroll skulle blanda
+              ihop en körande process med en tjänst som kan hantera arbete.
+              Scenariot visar den skillnaden, men är inte ett riktigt
+              databasavbrott.
+            </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/app/main.py"
@@ -291,6 +389,12 @@
             <p>
               XLSX-exporten utgår från lagrade händelser och samma analys som
               webbpanelen använder.
+            </p>
+            <p class="decision-tradeoff">
+              <strong>Avvägning:</strong> Separata formler för webbpanel och
+              export riskerar olika svar. Återanvänd analys gör sambandet
+              tydligt; stora historiska datamängder kräver en annan strategi för
+              aggregering.
             </p>
             <a
               class="text-link"
@@ -326,7 +430,7 @@
             </ul>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/tests/test_analytics.py"
+              href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py"
               rel="noopener noreferrer"
               target="_blank"
               >Analystester<span aria-hidden="true"> ↗</span></a
@@ -343,7 +447,7 @@
               <span>tests/test_analytics.py · L31–38</span
               ><a
                 class="text-link"
-                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/tests/test_analytics.py#L31-L38"
+                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py#L31-L38"
                 rel="noopener noreferrer"
                 target="_blank"
                 >Källkod<span aria-hidden="true"> ↗</span></a
@@ -360,6 +464,74 @@
     assert kpis["availability"] == 91.7
     assert kpis["scrap_rate"] == 0.0
     assert kpis["good_units"] == 200</code></pre>
+          </div>
+        </div>
+      </section>
+      <section class="section shell case-section" id="evidence">
+        <div class="section-head">
+          <p class="eyebrow">REPRODUCERBART EXEMPEL</p>
+          <div>
+            <h2>Ett larm.<br>Synliga beräkningar.</h2>
+            <p>
+              Ett separat, deterministiskt testunderlag — inte siffrorna från
+              videon eller en riktig fabrik.
+            </p>
+          </div>
+        </div>
+        <dl class="evidence-metrics">
+          <div>
+            <dt>Händelser</dt>
+            <dd>24</dd>
+          </div>
+          <div>
+            <dt>Tryck per händelse</dt>
+            <dd>7.60 <small>bar</small></dd>
+          </div>
+          <div>
+            <dt>Godkända / kasserade</dt>
+            <dd>192 / 48</dd>
+          </div>
+          <div>
+            <dt>Beräknad kassation</dt>
+            <dd>20.00 <small>%</small></dd>
+          </div>
+        </dl>
+        <div class="case-split">
+          <div class="prose">
+            <h3>48 / (192 + 48) × 100 = 20%</h3>
+            <p>
+              Varje händelse har åtta godkända och två kasserade enheter.
+              Medeltrycket 7,60 bar överstiger 7,15 bar och kassationen 20 %
+              överstiger 3 %. Båda villkoren är därför uppfyllda.
+            </p>
+            <p>
+              Resultatet är PRESSURE_DRIFT med kritisk nivå och ett underlag som
+              anger tryck och kassation. Regeln visar samvariation i testdata,
+              inte bevis för en verklig felorsak.
+            </p>
+          </div>
+          <div class="endpoint-list">
+            <h3>Kontrollera själv</h3>
+            <p>
+              Kör skriptet från roten av ett LinePulse-kodarkiv med projektets
+              Python-beroenden installerade.
+            </p>
+            <div class="case-links">
+              <a
+                class="text-link"
+                download
+                href="scripts/reproduce-linepulse-evidence.py"
+                >Hämta verifieringsskript ↓</a
+              ><a class="text-link" href="assets/linepulse-evidence.json"
+                >Läs sparat resultat →</a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Testunderlaget i GitHub ↗</a
+              >
+            </div>
           </div>
         </div>
       </section>

@@ -1,0 +1,13 @@
+WEBVTT
+
+00:00.000 --> 00:04.000
+Local LinePulse demo with synthetic production data.
+
+00:04.000 --> 00:09.000
+Pressure drift is selected. Events are advanced faster through the API.
+
+00:09.000 --> 00:19.000
+The alert shows pressure, scrap and a recommended inspection.
+
+00:19.000 --> 00:30.000
+An XLSX shift report downloads from the same stored events.

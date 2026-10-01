@@ -76,3 +76,9 @@ When changing CSS or JavaScript, refresh their content version parameters in all
 `signature.css` supplies the shared visual layer. `signature.js` progressively enhances the three-project architecture selector, email copying and reading progress. All project panels remain readable without JavaScript. Diagrams are simplified architecture views, not live operational dashboards. Social previews are local 1200 × 630 images in English and Swedish.
 
 Run `node scripts/signature-checks.cjs` for keyboard, project switching, clipboard fallback, lazy media and no-JavaScript checks. The test stubs clipboard writes so it does not alter the system clipboard.
+
+## LinePulse evidence story
+
+The LinePulse case study includes a 24-second local application recording, Swedish/English WebVTT captions, written walkthrough and explicit simulation/acceleration disclosure. Playback is user-initiated. `assets/linepulse-evidence.json` records a separate deterministic test fixture, with the source commit. Download `scripts/reproduce-linepulse-evidence.py` and run it from a LinePulse checkout with its Python dependencies installed to reproduce those values. They are not factory measurements or the video's evolving simulation data.
+
+`node scripts/linepulse-checks.cjs` verifies playback, captions, no initial video request, mobile overflow and the downloadable evidence.
