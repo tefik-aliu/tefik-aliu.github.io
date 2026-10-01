@@ -620,7 +620,8 @@ code {
 }
 pre code {
   font: inherit;
-  overflow-wrap: normal;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 .proof-caption {
   margin-top: 17px;
