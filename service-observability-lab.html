@@ -1,325 +1,430 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Service Observability Lab — Engineering Case Study</title>
-  <meta name="description" content="Engineering case study for Service Observability Lab: FastAPI, PostgreSQL, Prometheus, Grafana, OpenTelemetry, Docker, Kubernetes, Pytest and Playwright.">
-  <meta name="theme-color" content="#08111f">
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="Service Observability Lab — Engineering Case Study">
-  <meta property="og:description" content="How a small FastAPI service was designed around reliability, observability, automated QA and deployability.">
-  <meta property="og:url" content="https://tefik-aliu.github.io/service-observability-lab.html">
-  <meta property="og:image" content="https://tefik-aliu.github.io/assets/social-preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body class="case-study-page">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Back to Tefik Aliu portfolio">
-      <span class="brand-mark">TA</span>
-      <span>Tefik Aliu</span>
-    </a>
-
-    <button class="menu-button" aria-expanded="false" aria-controls="site-nav">
-      <span></span><span></span><span></span>
-      <span class="sr-only">Toggle navigation</span>
-    </button>
-
-    <nav id="site-nav" class="site-nav" aria-label="Case study navigation">
-      <a href="#architecture">Architecture</a>
-      <a href="#quality">Quality</a>
-      <a href="#debugging">Debugging</a>
-      <a href="#limits">Limits</a>
-      <a href="index.html">Portfolio</a>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="case-hero section-shell">
-      <div class="case-breadcrumb reveal">
-        <a href="index.html">Portfolio</a><span>/</span><span>Engineering case study</span>
-      </div>
-
-      <div class="case-hero-grid">
-        <div class="case-hero-copy reveal">
-          <p class="eyebrow"><span class="status-dot"></span> Flagship engineering case study</p>
-          <h1>Service<br><span>Observability Lab.</span></h1>
-          <p class="case-lead">
-            A small FastAPI service built as if operations, testing and deployment mattered from day one —
-            not as an afterthought after the CRUD endpoints were finished.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/tefik-aliu/service-observability-lab" target="_blank" rel="noopener">Inspect repository ↗</a>
-            <a class="button button-secondary" href="https://github.com/tefik-aliu/service-observability-lab/actions" target="_blank" rel="noopener">View CI history ↗</a>
-          </div>
-        </div>
-
-        <aside class="case-summary-card reveal">
-          <p class="card-label">Project brief</p>
-          <dl class="case-facts">
-            <div><dt>Focus</dt><dd>Reliability · QA · Observability</dd></div>
-            <div><dt>Service</dt><dd>Python · FastAPI · SQLAlchemy</dd></div>
-            <div><dt>Data</dt><dd>PostgreSQL · SQLite test fallback</dd></div>
-            <div><dt>Operations</dt><dd>Docker · Kubernetes · health probes</dd></div>
-            <div><dt>Signals</dt><dd>Metrics · traces · readiness</dd></div>
-            <div><dt>Quality</dt><dd>Ruff · Pytest · TypeScript · Playwright</dd></div>
-          </dl>
-        </aside>
-      </div>
-
-      <div class="case-proof-grid reveal" aria-label="Project evidence">
-        <article><strong>2</strong><span>independent CI jobs</span></article>
-        <article><strong>4</strong><span>operational signal types</span></article>
-        <article><strong>3</strong><span>deployment contexts</span></article>
-        <article><strong>1</strong><span>reproducible repository</span></article>
-      </div>
-    </section>
-
-    <section class="case-section section-shell" id="problem">
-      <div class="case-section-heading reveal">
-        <p class="eyebrow">01 · The problem</p>
-        <h2>Most portfolio APIs prove that an endpoint works. This project asks what happens next.</h2>
-      </div>
-      <div class="case-two-column">
-        <div class="case-copy reveal">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service Observability Lab — Case Study | Tefik Aliu</title>
+    <meta
+      name="description"
+      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab.">
+    <meta name="theme-color" content="#111311">
+    <link
+      rel="canonical"
+      href="https://tefik-aliu.github.io/service-observability-lab.html">
+    <meta property="og:type" content="website">
+    <meta
+      property="og:title"
+      content="Service Observability Lab — Case Study | Tefik Aliu">
+    <meta
+      property="og:description"
+      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab.">
+    <meta
+      property="og:url"
+      content="https://tefik-aliu.github.io/service-observability-lab.html">
+    <meta
+      property="og:image"
+      content="https://tefik-aliu.github.io/assets/social-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta
+      property="og:image:alt"
+      content="Tefik Aliu — Software Engineer. Build systems. Ship software. Prove it works.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta
+      name="twitter:title"
+      content="Service Observability Lab — Case Study | Tefik Aliu">
+    <meta
+      name="twitter:description"
+      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab.">
+    <meta
+      name="twitter:image"
+      content="https://tefik-aliu.github.io/assets/social-preview.png">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Service Observability Lab — Case Study | Tefik Aliu",
+        "url": "https://tefik-aliu.github.io/service-observability-lab.html",
+        "author": {
+          "@type": "Person",
+          "name": "Tefik Aliu",
+          "url": "https://tefik-aliu.github.io/"
+        }
+      }
+    </script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a class="brand" href="index.html" aria-label="Tefik Aliu home"
+        >tefik aliu<span aria-hidden="true">.</span></a
+      >
+      <span class="header-role">SOFTWARE ENGINEER</span>
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        hidden
+      >
+        Menu <span aria-hidden="true">+</span>
+      </button>
+      <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+        <a href="index.html#projects" data-section="projects">Work</a
+        ><a href="index.html#engineering" data-section="engineering"
+          >Engineering</a
+        ><a href="index.html#about" data-section="about">About</a
+        ><a href="index.html#contact" data-section="contact">Contact</a>
+        <a
+          class="nav-cv"
+          href="assets/Tefik_Aliu_CV.pdf"
+          target="_blank"
+          rel="noopener"
+          >CV <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section id="top" class="case-hero shell">
+        <a class="back-link" href="index.html#projects">← Selected work</a>
+        <p class="eyebrow">02 / BACKEND &amp; OPERATIONS</p>
+        <h1>Service<br>Observability Lab<span>.</span></h1>
+        <div class="case-intro">
           <p>
-            A service can return a successful response and still be difficult to operate. It may expose no readiness state,
-            no useful metrics, no trace path, no deployment contract and no automated browser-level proof that the full workflow works.
+            A job-management service designed with operational signals,
+            automated verification and deployment configuration alongside the
+            API.
           </p>
-          <p>
-            Service Observability Lab was built to demonstrate a broader engineering question:
-            <strong>Can a small service be understandable, testable and diagnosable before it becomes large?</strong>
-          </p>
-        </div>
-        <aside class="principle-card reveal">
-          <span>Design principle</span>
-          <blockquote>“Working locally” is the start of the evidence, not the end of it.</blockquote>
-        </aside>
-      </div>
-    </section>
-
-    <section class="case-section section-shell" id="architecture">
-      <div class="case-section-heading reveal">
-        <p class="eyebrow">02 · Architecture</p>
-        <h2>One service. Multiple forms of operational evidence.</h2>
-        <p>The architecture keeps the application small while making service behaviour visible to developers, tests and operators.</p>
-      </div>
-
-      <div class="architecture-board reveal" aria-label="Service Observability Lab architecture diagram">
-        <div class="architecture-lane lane-client">
-          <span class="lane-label">Clients</span>
-          <div class="arch-node"><b>Browser / API</b><small>User workflow</small></div>
-        </div>
-        <div class="arch-arrow arrow-right" aria-hidden="true">→</div>
-        <div class="architecture-lane lane-app">
-          <span class="lane-label">Application</span>
-          <div class="arch-node arch-primary"><b>FastAPI service</b><small>REST API · dashboard · probes</small></div>
-        </div>
-        <div class="arch-arrow arrow-right" aria-hidden="true">→</div>
-        <div class="architecture-lane lane-data">
-          <span class="lane-label">Data</span>
-          <div class="arch-node"><b>PostgreSQL</b><small>SQLite for isolated tests</small></div>
-        </div>
-
-        <div class="architecture-observe">
-          <div class="arch-node"><b>Prometheus</b><small>Scrapes /metrics</small></div>
-          <div class="arch-arrow mini" aria-hidden="true">→</div>
-          <div class="arch-node"><b>Grafana</b><small>Operational dashboard</small></div>
-        </div>
-
-        <div class="architecture-trace">
-          <div class="arch-node"><b>OpenTelemetry</b><small>OTLP traces</small></div>
-          <div class="arch-arrow mini" aria-hidden="true">→</div>
-          <div class="arch-node"><b>Collector</b><small>Debug exporter in lab</small></div>
-        </div>
-
-        <div class="architecture-ci">
-          <span class="lane-label">Automated evidence</span>
-          <div class="arch-node"><b>GitHub Actions</b><small>Ruff · Pytest · TypeScript · Playwright</small></div>
-        </div>
-      </div>
-
-      <div class="decision-grid">
-        <article class="decision-card reveal">
-          <span>01</span>
-          <h3>Application factory</h3>
-          <p><code>create_app()</code> accepts a database URL, making the service easy to start with PostgreSQL and easy to isolate with in-memory SQLite during tests.</p>
-        </article>
-        <article class="decision-card reveal">
-          <span>02</span>
-          <h3>Separate health and readiness</h3>
-          <p><code>/health</code> proves the process responds. <code>/ready</code> executes a database check so orchestration can distinguish alive from ready.</p>
-        </article>
-        <article class="decision-card reveal">
-          <span>03</span>
-          <h3>Useful metrics</h3>
-          <p>Request count, latency, created jobs and jobs by status expose both technical behaviour and a small piece of business state.</p>
-        </article>
-        <article class="decision-card reveal">
-          <span>04</span>
-          <h3>Deployability as code</h3>
-          <p>Docker Compose provides the full local stack. Kubernetes manifests define probes, resources, configuration and a provider-neutral service contract.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="case-section section-shell" id="quality">
-      <div class="case-section-heading reveal">
-        <p class="eyebrow">03 · Quality strategy</p>
-        <h2>Different failures require different quality gates.</h2>
-      </div>
-
-      <div class="quality-table reveal" role="table" aria-label="Automated quality gates">
-        <div class="quality-row quality-head" role="row">
-          <span role="columnheader">Gate</span>
-          <span role="columnheader">What it protects</span>
-          <span role="columnheader">Execution</span>
-        </div>
-        <div class="quality-row" role="row">
-          <strong role="cell">Ruff</strong>
-          <span role="cell">Python correctness, consistency and maintainability issues</span>
-          <em role="cell">CI · automated</em>
-        </div>
-        <div class="quality-row" role="row">
-          <strong role="cell">Pytest</strong>
-          <span role="cell">Health, readiness, validation, full job lifecycle and metrics exposure</span>
-          <em role="cell">CI · automated</em>
-        </div>
-        <div class="quality-row" role="row">
-          <strong role="cell">TypeScript</strong>
-          <span role="cell">Static validation of the browser automation suite</span>
-          <em role="cell">CI · automated</em>
-        </div>
-        <div class="quality-row" role="row">
-          <strong role="cell">Playwright</strong>
-          <span role="cell">Real browser workflow plus direct checks of health and metrics endpoints</span>
-          <em role="cell">CI · automated</em>
-        </div>
-        <div class="quality-row" role="row">
-          <strong role="cell">k6</strong>
-          <span role="cell">A load-test contract with error-rate and p95 latency thresholds</span>
-          <em role="cell">On demand</em>
-        </div>
-      </div>
-
-      <div class="evidence-grid">
-        <article class="evidence-card reveal">
-          <span class="evidence-status">✓ Passing</span>
-          <h3>Python quality job</h3>
-          <p>Installs development dependencies, runs Ruff and executes the API test suite in an isolated environment.</p>
-        </article>
-        <article class="evidence-card reveal">
-          <span class="evidence-status">✓ Passing</span>
-          <h3>Browser QA job</h3>
-          <p>Starts the service, waits for readiness, validates TypeScript, installs Chromium and runs Playwright end to end.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="case-section section-shell" id="debugging">
-      <div class="case-section-heading reveal">
-        <p class="eyebrow">04 · Debugging record</p>
-        <h2>The strongest evidence was not a perfect first run. It was the path from red to green.</h2>
-        <p>The CI history records real integration problems and the changes used to resolve them.</p>
-      </div>
-
-      <ol class="debug-timeline">
-        <li class="reveal">
-          <span>01</span>
-          <div>
-            <h3>The workflow directory was missing</h3>
-            <p>The hidden <code>.github</code> folder was not included during the first repository upload. The workflow was recreated directly in the repository.</p>
+          <div class="case-links">
+            <a
+              class="button primary"
+              href="https://github.com/tefik-aliu/service-observability-lab"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Inspect repository<span aria-hidden="true"> ↗</span></a
+            ><a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/actions"
+              target="_blank"
+              rel="noopener noreferrer"
+              >CI history<span aria-hidden="true"> ↗</span></a
+            >
           </div>
-        </li>
-        <li class="reveal">
-          <span>02</span>
-          <div>
-            <h3>Node cache expected a lockfile</h3>
-            <p>The browser job failed because npm caching was enabled without a compatible lockfile. The unnecessary cache configuration was removed.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span>03</span>
-          <div>
-            <h3>Static analysis exposed Python issues</h3>
-            <p>Ruff identified dependency-default and UTC-modernisation problems. The dependency wiring was refactored and timezone handling moved to <code>datetime.now(UTC)</code>.</p>
-          </div>
-        </li>
-        <li class="reveal">
-          <span>04</span>
-          <div>
-            <h3>Tests could not import the application package</h3>
-            <p>The CI command was changed to module-based invocation so the repository root remained on Python’s import path.</p>
-          </div>
-        </li>
-        <li class="reveal debug-success">
-          <span>✓</span>
-          <div>
-            <h3>Both pipelines passed</h3>
-            <p>Python quality and browser QA completed successfully, leaving a visible, inspectable record of the debugging process.</p>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section class="case-section section-shell" id="limits">
-      <div class="case-section-heading reveal">
-        <p class="eyebrow">05 · Honest limits</p>
-        <h2>A credible case study states what the system does not prove.</h2>
-      </div>
-
-      <div class="limits-grid">
-        <article class="limit-card reveal">
-          <h3>Not production at scale</h3>
-          <p>The repository demonstrates patterns and integration, not sustained traffic, multi-region resilience or a production SLO history.</p>
-        </article>
-        <article class="limit-card reveal">
-          <h3>No authentication layer</h3>
-          <p>The lab focuses on service reliability and QA. Identity, permissions, audit logging and threat modelling remain future work.</p>
-        </article>
-        <article class="limit-card reveal">
-          <h3>Tracing uses a lab exporter</h3>
-          <p>OpenTelemetry traces are sent to a collector with a debug exporter rather than a persistent tracing backend.</p>
-        </article>
-        <article class="limit-card reveal">
-          <h3>Kubernetes assets are provider-neutral</h3>
-          <p>The manifests define probes, resources and configuration, but the project does not claim operation in a managed production cluster.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="case-section section-shell">
-      <div class="next-card reveal">
-        <div>
-          <p class="eyebrow">What I would build next</p>
-          <h2>Turn visibility into operating decisions.</h2>
-          <p>
-            Add authentication, alert rules, SLO dashboards, persistent traces, database migrations,
-            container image publishing and a staged deployment pipeline with rollback evidence.
-          </p>
         </div>
-        <div class="next-actions">
-          <a class="button button-primary" href="https://github.com/tefik-aliu/service-observability-lab" target="_blank" rel="noopener">Review the code ↗</a>
-          <a class="button button-secondary" href="index.html#projects">Back to projects</a>
+        <dl class="case-meta">
+          <div>
+            <dt>Application</dt>
+            <dd>FastAPI · SQLAlchemy</dd>
+          </div>
+          <div>
+            <dt>Persistence</dt>
+            <dd>PostgreSQL / SQLite tests</dd>
+          </div>
+          <div>
+            <dt>Signals</dt>
+            <dd>Prometheus · OTLP tracing</dd>
+          </div>
+          <div>
+            <dt>Delivery</dt>
+            <dd>Docker Compose · Kubernetes manifests</dd>
+          </div>
+        </dl>
+      </section>
+      <section class="section shell case-section" id="architecture">
+        <div class="section-head">
+          <p class="eyebrow">01 / ARCHITECTURE</p>
+          <div>
+            <h2>The request is only<br>part of the system.</h2>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="case-split">
+          <div class="prose">
+            <h3>The problem</h3>
+            <p>
+              An endpoint can return a successful response while the service
+              remains difficult to diagnose. This project adds dependency
+              checks, request metrics and trace instrumentation to a small job
+              API.
+            </p>
+            <h3>The implementation</h3>
+            <p>
+              FastAPI handles a queued, running, completed or failed job
+              lifecycle. PostgreSQL stores state in the Compose stack;
+              Prometheus collects metrics, Grafana presents them, and an
+              optional OpenTelemetry exporter sends traces to a collector.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/docker-compose.yml"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Compose topology<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <figure class="system-figure">
+            <figcaption><span class="mono">SERVICE TOPOLOGY</span></figcaption>
+            <div class="system-node">
+              <b>Browser / API client</b><small>Job lifecycle</small>
+            </div>
+            <div class="flow-connector">
+              <span>HTTP / JSON</span><span aria-hidden="true">↓</span>
+            </div>
+            <div class="system-node primary-node">
+              <b>FastAPI service</b
+              ><small>Validation · persistence · instrumentation</small>
+            </div>
+            <div class="flow-connector">
+              <span>Dependencies &amp; signals</span
+              ><span aria-hidden="true">↓</span>
+            </div>
+            <div class="system-outputs">
+              <div><b>PostgreSQL</b><small>Job state</small></div>
+              <div><b>Prometheus</b><small>→ Grafana</small></div>
+              <div><b>OTLP</b><small>→ Collector</small></div>
+            </div>
+            <div class="diagram-foot">
+              Topology from the repository’s Docker Compose configuration
+            </div>
+          </figure>
+        </div>
+      </section>
+      <section class="section shell case-section" id="decisions">
+        <div class="section-head">
+          <p class="eyebrow">02 / DESIGN DECISIONS</p>
+          <div>
+            <h2>Operational behaviour<br>as an explicit contract.</h2>
+          </div>
+        </div>
+        <div class="decision-grid">
+          <article class="decision">
+            <h3>An application factory</h3>
+            <p>
+              create_app() accepts a database URL. Tests can isolate persistence
+              with SQLite while the container stack uses PostgreSQL.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </article>
+          <article class="decision">
+            <h3>Health and readiness</h3>
+            <p>
+              /health identifies a responding process. /ready executes a
+              database query. Kubernetes manifests bind them to separate
+              liveness and readiness probes.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/k8s/app.yaml"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </article>
+          <article class="decision">
+            <h3>Metrics with application context</h3>
+            <p>
+              Request counts and latency are exposed alongside jobs created and
+              jobs by status, connecting HTTP behaviour to service state.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/metrics.py"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </article>
+          <article class="decision">
+            <h3>Tracing behind configuration</h3>
+            <p>
+              OTLP export is enabled through an environment variable. Without an
+              endpoint, the service runs without tracing infrastructure.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/telemetry.py"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Inspect implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </article>
+        </div>
+      </section>
+      <section class="section shell case-section" id="quality">
+        <div class="section-head">
+          <p class="eyebrow">03 / QUALITY GATES</p>
+          <div>
+            <h2>Different boundaries.<br>Different checks.</h2>
+          </div>
+        </div>
+        <section
+          class="table-wrap"
+          tabindex="0"
+          aria-label="Quality gates"
+        >
+          <table>
+            <caption class="sr-only">
+              Quality checks and execution
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Gate</th>
+                <th scope="col">Behaviour covered</th>
+                <th scope="col">Execution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Ruff + Pytest</th>
+                <td>
+                  Python checks; health, readiness, validation, job lifecycle
+                  and metrics
+                </td>
+                <td>GitHub Actions</td>
+              </tr>
+              <tr>
+                <th scope="row">TypeScript + Playwright</th>
+                <td>Browser workflow and service endpoint checks</td>
+                <td>GitHub Actions</td>
+              </tr>
+              <tr>
+                <th scope="row">k6</th>
+                <td>Error rate and p95 latency thresholds</td>
+                <td>On demand</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <div class="inline-links">
+          <a
+            class="text-link"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/.github/workflows/ci.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CI workflow<span aria-hidden="true"> ↗</span></a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/tests/test_api.py"
+            target="_blank"
+            rel="noopener noreferrer"
+            >API tests<span aria-hidden="true"> ↗</span></a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/service.spec.ts"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Browser tests<span aria-hidden="true"> ↗</span></a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/load/k6.js"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Load-test contract<span aria-hidden="true"> ↗</span></a
+          >
+        </div>
+      </section>
+      <section class="section shell case-section" id="implementation">
+        <div class="section-head">
+          <p class="eyebrow">04 / SOURCE EXCERPT</p>
+          <div>
+            <h2>Readiness checks<br>a real dependency.</h2>
+          </div>
+        </div>
+        <div class="code-proof">
+          <div class="proof-header">
+            <span>app/main.py · L60–67</span
+            ><a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py#L60-L67"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Source<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <pre
+            tabindex="0"
+            aria-label="app/main.py source excerpt"
+          ><code>    @app.get(&quot;/health&quot;)
+    def health() -&gt; dict[str, str]:
+        return {&quot;status&quot;: &quot;ok&quot;, &quot;service&quot;: &quot;service-observability-lab&quot;}
 
-  <footer class="site-footer section-shell">
-    <span>© <span id="year"></span> Tefik Aliu</span>
-    <span>Designed to be inspected, not merely displayed.</span>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    @app.get(&quot;/ready&quot;)
+    def readiness(db: Session = db_dependency) -&gt; dict[str, str]:
+        db.execute(text(&quot;SELECT 1&quot;))
+        return {&quot;status&quot;: &quot;ready&quot;, &quot;database&quot;: &quot;connected&quot;}</code></pre>
+        </div>
+        <p class="small-note">
+          Excerpt from app/main.py. A database query is performed before the
+          readiness response is returned.
+        </p>
+      </section>
+      <section class="section shell case-section" id="limits">
+        <div class="section-head">
+          <p class="eyebrow">05 / RESULT &amp; NEXT STEPS</p>
+          <div>
+            <h2>Reproducible integration.<br>Documented boundaries.</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              The repository contains a runnable service, a local observability
+              stack, tests and deployment assets. It demonstrates the
+              integration of application behaviour and operational tooling.
+            </p>
+            <p>
+              The collector uses a debug exporter. Persistent trace storage,
+              authentication, migrations, SLO alerting and a staged rollback
+              pipeline remain extensions. Kubernetes manifests are deployment
+              definitions; they do not establish a production operating history.
+            </p>
+          </div>
+          <details class="technical-details">
+            <summary>
+              Implementation history <span aria-hidden="true">+</span>
+            </summary>
+            <p>
+              The original integration notes record workflow setup, npm cache
+              configuration, Ruff findings and Python import-path fixes. The
+              commit and CI history remain available for inspection.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/commits/main"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Commit history<span aria-hidden="true"> ↗</span></a
+            ><a
+              class="text-link"
+              href="https://github.com/tefik-aliu/service-observability-lab/actions"
+              target="_blank"
+              rel="noopener noreferrer"
+              >CI history<span aria-hidden="true"> ↗</span></a
+            >
+          </details>
+        </div>
+      </section>
+      <section class="next-project shell">
+        <p class="eyebrow">CONTINUE EXPLORING</p>
+        <a class="next-link" href="linepulse.html"
+          >Explore LinePulse<span aria-hidden="true"> →</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <span>© <span id="year">2026</span> Tefik Aliu</span
+      ><span>Software engineering / Sweden</span
+      ><a href="https://github.com/tefik-aliu" target="_blank" rel="noopener"
+        >GitHub ↗</a
+      ><a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
 </html>
