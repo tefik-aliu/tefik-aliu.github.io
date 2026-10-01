@@ -68,8 +68,9 @@
       hreflang="x-default"
       rel="alternate">
     <link rel="stylesheet" href="signature.css?v=73a4bf8ae2a4">
-    <script src="signature.js?v=ebd084073bff" defer></script>
-  </head>
+    <script src="signature.js?v=6483282e8e8a" defer></script>
+  <noscript><style>.atlas-panel[hidden] { display: block !important; } .atlas-controls { display: none !important; }</style></noscript>
+</head>
   <body class="portfolio-home">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header shell">
@@ -153,7 +154,6 @@
           <div
             aria-label="Choose a project"
             class="atlas-controls"
-            hidden
             role="group"
           >
             <button
@@ -161,21 +161,21 @@
               aria-pressed="true"
               data-atlas="linepulse"
               type="button"
-            >
+             disabled>
               LinePulse</button
             ><button
               aria-controls="atlas-issuepilot"
               aria-pressed="false"
               data-atlas="issuepilot"
               type="button"
-            >
+             disabled>
               IssuePilot</button
             ><button
               aria-controls="atlas-observability"
               aria-pressed="false"
               data-atlas="observability"
               type="button"
-            >
+             disabled>
               Observability
             </button>
           </div>
@@ -218,7 +218,7 @@
             class="atlas-panel"
             data-atlas-panel="issuepilot"
             id="atlas-issuepilot"
-          >
+           hidden>
             <div class="atlas-heading">
               <span class="mono">02 / ISSUEPILOT</span
               ><span aria-hidden="true" class="atlas-mark">↗</span>
@@ -250,7 +250,7 @@
             class="atlas-panel"
             data-atlas-panel="observability"
             id="atlas-observability"
-          >
+           hidden>
             <div class="atlas-heading">
               <span class="mono">03 / OBSERVABILITY</span
               ><span aria-hidden="true" class="atlas-mark">↗</span>

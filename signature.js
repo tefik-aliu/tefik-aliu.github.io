@@ -15,6 +15,7 @@ if (atlasControls && atlasButtons.length && atlasPanels.length) {
   }
   chooseSystem("linepulse");
   atlasControls.hidden = false;
+  atlasButtons.forEach(button => { button.disabled = false; });
   atlasButtons.forEach((button) =>
     button.addEventListener("click", () => chooseSystem(button.dataset.atlas)),
   );

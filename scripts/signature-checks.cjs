@@ -8,7 +8,15 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:4173';
    const context=await browser.newContext();
    await context.addInitScript(() => Object.defineProperty(navigator,'clipboard',{value:{writeText:async text=>{window.copiedEmail=text}}}));
    const page=await context.newPage();
-   await page.goto(`${base}/index${lang==='sv'?'.sv':''}.html`);
+   await page.addInitScript(() => {
+    window.initialLayoutShift = 0;
+    new PerformanceObserver(list => {
+     for (const entry of list.getEntries()) if (!entry.hadRecentInput) window.initialLayoutShift += entry.value;
+    }).observe({type:'layout-shift',buffered:true});
+   });
+   await page.goto(`${base}/index${lang==='sv'?'.sv':''}.html`, {waitUntil:'networkidle'});
+   assert.ok(await page.evaluate(() => window.initialLayoutShift < .05), 'Initial content should remain stable');
+   assert.equal(await page.evaluate(() => performance.getEntriesByType('resource').filter(r=>r.name.endsWith('.webm')).length), 0);
    for (const width of [320,390,768,1440]) {
     await page.setViewportSize({width,height:900});
     for (const key of ['issuepilot','observability','linepulse']) {
