@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>LinePulse — System Case Study | Tefik Aliu</title>
     <meta
-      content="Inside LinePulse: a FastAPI event simulation system with SQLAlchemy, explainable analytics, reporting, API tests and browser verification."
+      content="From simulated pressure drift to an explainable alert and shift report. Watch the demo, inspect tradeoffs and reproduce the test results."
       name="description">
     <meta content="#111311" name="theme-color">
     <link href="https://tefik-aliu.github.io/linepulse.html" rel="canonical">
@@ -15,7 +15,7 @@
       content="LinePulse — System Case Study | Tefik Aliu"
       property="og:title">
     <meta
-      content="Inside LinePulse: a FastAPI event simulation system with SQLAlchemy, explainable analytics, reporting, API tests and browser verification."
+      content="From simulated pressure drift to an explainable alert and shift report. Watch the demo, inspect tradeoffs and reproduce the test results."
       property="og:description">
     <meta
       content="https://tefik-aliu.github.io/linepulse.html"
@@ -33,7 +33,7 @@
       content="LinePulse — System Case Study | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="Inside LinePulse: a FastAPI event simulation system with SQLAlchemy, explainable analytics, reporting, API tests and browser verification."
+      content="From simulated pressure drift to an explainable alert and shift report. Watch the demo, inspect tradeoffs and reproduce the test results."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-signature-en.png"
@@ -66,9 +66,10 @@
       href="https://tefik-aliu.github.io/linepulse.html"
       hreflang="x-default"
       rel="alternate">
-  <link rel="stylesheet" href="signature.css?v=73a4bf8ae2a4">
-<script src="signature.js?v=6483282e8e8a" defer></script>
-</head>
+    <link href="signature.css?v=73a4bf8ae2a4" rel="stylesheet">
+    <script defer src="signature.js?v=6483282e8e8a"></script>
+    <link rel="stylesheet" href="linepulse-case.css?v=4f0e8b2f292b">
+  </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header shell">
@@ -115,9 +116,9 @@
         <h1>LinePulse<span>.</span></h1>
         <div class="case-intro">
           <p>
-            A simulation platform that turns event data into metrics,
-            explainable alerts and reports. The engineering spans the browser,
-            API, database, analytics and verification.
+            Small production problems can disappear inside a headline metric.
+            LinePulse shows how a process change becomes visible in data — and
+            how an alert can expose the evidence behind its recommendation.
           </p>
           <div class="case-links">
             <a
@@ -159,6 +160,82 @@
             <dd>Synthetic production data</dd>
           </div>
         </dl>
+        <nav aria-label="On this page" class="case-jump-links">
+          <a href="#demo">Watch the demo <span aria-hidden="true">↘</span></a
+          ><a href="#architecture"
+            >Architecture <span aria-hidden="true">↘</span></a
+          ><a href="#decisions">Tradeoffs <span aria-hidden="true">↘</span></a
+          ><a href="#evidence"
+            >Test results <span aria-hidden="true">↘</span></a
+          >
+        </nav>
+      </section>
+      <section
+        aria-labelledby="demo-title"
+        class="section shell case-section case-demo"
+        id="demo"
+      >
+        <div class="section-head">
+          <p class="eyebrow">SEE THE SYSTEM WORK</p>
+          <div>
+            <h2 id="demo-title">
+              From pressure drift<br>to the next action.
+            </h2>
+            <p>A short, captioned recording of the actual application.</p>
+          </div>
+        </div>
+        <div class="case-demo-grid">
+          <figure>
+            <video
+              aria-label="LinePulse: pressure drift, alert and shift report"
+              controls
+              poster="assets/demos/linepulse-evidence.png"
+              preload="none"
+            >
+              <source
+                src="assets/demos/linepulse-story.webm"
+                type="video/webm">
+              <track
+                default
+                kind="captions"
+                label="English"
+                src="assets/demos/linepulse-story.en.vtt"
+                srclang="en">
+              <a href="assets/demos/linepulse-story.webm">Open the recording</a>
+            </video>
+            <figcaption>
+              Local demo with synthetic data. Events are advanced through the
+              API to show the sequence more quickly. No audio.
+            </figcaption>
+          </figure>
+          <div class="demo-walkthrough">
+            <h3>What to look for</h3>
+            <ol>
+              <li>
+                <b>Baseline</b>
+                <p>The dashboard shows the metrics and available scenarios.</p>
+              </li>
+              <li>
+                <b>Pressure drift</b>
+                <p>
+                  The scenario changes and new simulated events are created.
+                </p>
+              </li>
+              <li>
+                <b>Evidence behind the alert</b>
+                <p>
+                  The alert shows pressure, scrap and a suggested inspection.
+                </p>
+              </li>
+              <li>
+                <b>Report</b>
+                <p>
+                  An XLSX shift report downloads from the same stored events.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </div>
       </section>
       <section class="section shell case-section" id="architecture">
         <div class="section-head">
@@ -169,6 +246,13 @@
         </div>
         <div class="case-split">
           <div class="prose">
+            <h3>Why I built it</h3>
+            <p>
+              My background includes more than 20 years in glass production at
+              Saint-Gobain. Small stops, scrap and useful troubleshooting
+              evidence are concrete questions to me. LinePulse is my independent
+              software project exploring them in code, without factory data.
+            </p>
             <h3>The problem</h3>
             <p>
               Raw events do not explain why output changes. A useful system
@@ -249,6 +333,12 @@
               isolate persistence configuration; PostgreSQL is a deployment
               target, not a claim about the live demo.
             </p>
+            <p class="decision-tradeoff">
+              <strong>Tradeoff:</strong> An external database service offers
+              more deployment options but adds a local setup dependency. This
+              demo prioritises reproducibility; multi-user operation requires
+              more than changing a connection string.
+            </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/app/database.py"
@@ -264,6 +354,12 @@
               conditions. Alerts expose their evidence instead of assigning
               opaque confidence scores.
             </p>
+            <p class="decision-tradeoff">
+              <strong>Tradeoff:</strong> A statistical model would need
+              representative data and separate evaluation. These rules are
+              inspectable, but the thresholds are demonstration values and do
+              not establish causation.
+            </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/app/analytics.py"
@@ -278,6 +374,12 @@
               A dependency-failure scenario makes readiness return HTTP 503.
               Liveness remains a separate process check.
             </p>
+            <p class="decision-tradeoff">
+              <strong>Tradeoff:</strong> A single health check would conflate a
+              running process with a service ready to do work. The scenario
+              demonstrates that distinction; it is not an actual database
+              outage.
+            </p>
             <a
               class="text-link"
               href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/app/main.py"
@@ -291,6 +393,12 @@
             <p>
               The XLSX export derives from stored events and the same analysis
               boundary used by the dashboard.
+            </p>
+            <p class="decision-tradeoff">
+              <strong>Tradeoff:</strong> Separate dashboard and export formulas
+              risk inconsistent answers. Shared analysis keeps the relationship
+              explicit; large historical datasets would need a different
+              aggregation strategy.
             </p>
             <a
               class="text-link"
@@ -324,7 +432,7 @@
             </ul>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/tests/test_analytics.py"
+              href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py"
               rel="noopener noreferrer"
               target="_blank"
               >Analytics tests<span aria-hidden="true"> ↗</span></a
@@ -341,7 +449,7 @@
               <span>tests/test_analytics.py · L31–38</span
               ><a
                 class="text-link"
-                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/main/tests/test_analytics.py#L31-L38"
+                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py#L31-L38"
                 rel="noopener noreferrer"
                 target="_blank"
                 >Source<span aria-hidden="true"> ↗</span></a
@@ -358,6 +466,74 @@
     assert kpis["availability"] == 91.7
     assert kpis["scrap_rate"] == 0.0
     assert kpis["good_units"] == 200</code></pre>
+          </div>
+        </div>
+      </section>
+      <section class="section shell case-section" id="evidence">
+        <div class="section-head">
+          <p class="eyebrow">REPRODUCIBLE EXAMPLE</p>
+          <div>
+            <h2>One alert.<br>Visible calculations.</h2>
+            <p>
+              A separate deterministic test fixture — not the video’s values or
+              measurements from a real factory.
+            </p>
+          </div>
+        </div>
+        <dl class="evidence-metrics">
+          <div>
+            <dt>Events</dt>
+            <dd>24</dd>
+          </div>
+          <div>
+            <dt>Pressure per event</dt>
+            <dd>7.60 <small>bar</small></dd>
+          </div>
+          <div>
+            <dt>Good / rejected units</dt>
+            <dd>192 / 48</dd>
+          </div>
+          <div>
+            <dt>Calculated scrap</dt>
+            <dd>20.00 <small>%</small></dd>
+          </div>
+        </dl>
+        <div class="case-split">
+          <div class="prose">
+            <h3>48 / (192 + 48) × 100 = 20%</h3>
+            <p>
+              Each event contains eight good and two rejected units. Mean
+              pressure of 7.60 bar exceeds 7.15 bar and 20% scrap exceeds 3%.
+              Both conditions are therefore met.
+            </p>
+            <p>
+              The result is a critical PRESSURE_DRIFT alert with pressure and
+              scrap in its evidence. The rule shows co-occurrence in test data,
+              not proof of a real-world cause.
+            </p>
+          </div>
+          <div class="endpoint-list">
+            <h3>Verify it yourself</h3>
+            <p>
+              Run the script from a LinePulse checkout with the project’s Python
+              dependencies installed.
+            </p>
+            <div class="case-links">
+              <a
+                class="text-link"
+                download
+                href="scripts/reproduce-linepulse-evidence.py"
+                >Download verification script ↓</a
+              ><a class="text-link" href="assets/linepulse-evidence.json"
+                >Read the saved result →</a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/linepulse-industrial-intelligence/blob/643350db705fd21ba02123e3877678e1073358ac/tests/test_analytics.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Test fixture on GitHub ↗</a
+              >
+            </div>
           </div>
         </div>
       </section>

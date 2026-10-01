@@ -1,0 +1,22 @@
+{
+  "dataset": "24 identical synthetic events from the analytics test fixture",
+  "input": {
+    "events": 24,
+    "pressure_bar": 7.6,
+    "good_units_per_event": 8,
+    "reject_units_per_event": 2
+  },
+  "result": {
+    "good_units": 192,
+    "reject_units": 48,
+    "scrap_rate_percent": 20.0
+  },
+  "pressure_alert": {
+    "code": "PRESSURE_DRIFT",
+    "severity": "critical",
+    "title": "Cutting pressure drift is driving defects",
+    "evidence": "24-event pressure average is 7.60 bar and scrap is 20.00%.",
+    "recommendation": "Inspect pressure regulation and edge quality before the next batch."
+  },
+  "reference_commit": "643350db705fd21ba02123e3877678e1073358ac"
+}
