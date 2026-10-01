@@ -8,6 +8,7 @@ const baseURL = process.env.BASE_URL || "http://127.0.0.1:4173";
 const pages = [
   "index.html",
   "linepulse.html",
+  "issuepilot.html",
   "service-observability-lab.html",
   "qa-evidence-lab.html",
   "release-rescue.html",

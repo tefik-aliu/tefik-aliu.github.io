@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>IssuePilot — Access and history | Tefik Aliu</title>
+    <meta
+      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      name="description">
+    <meta content="#111311" name="theme-color">
+    <link href="https://tefik-aliu.github.io/issuepilot.html" rel="canonical">
+    <meta content="website" property="og:type">
+    <meta
+      content="IssuePilot — Access and history | Tefik Aliu"
+      property="og:title">
+    <meta
+      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      property="og:description">
+    <meta
+      content="https://tefik-aliu.github.io/issuepilot.html"
+      property="og:url">
+    <meta
+      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      property="og:image">
+    <meta content="1200" property="og:image:width">
+    <meta content="630" property="og:image:height">
+    <meta
+      content="Tefik Aliu — Software Engineer. Build systems. Ship software. Prove it works."
+      property="og:image:alt">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta
+      content="IssuePilot — Access and history | Tefik Aliu"
+      name="twitter:title">
+    <meta
+      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      name="twitter:description">
+    <meta
+      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      name="twitter:image">
+    <link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
+    <link href="styles.css?v=9ef9ef3a7e6d" rel="stylesheet">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "IssuePilot — Access and history | Tefik Aliu",
+        "url": "https://tefik-aliu.github.io/issuepilot.html",
+        "inLanguage": "en",
+        "author": { "@type": "Person", "name": "Tefik Aliu" }
+      }
+    </script>
+    <script defer="" src="script.js?v=a198b939de59"></script>
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.html"
+      hreflang="en"
+      rel="alternate">
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.sv.html"
+      hreflang="sv"
+      rel="alternate">
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.html"
+      hreflang="x-default"
+      rel="alternate">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header shell">
+      <a aria-label="Tefik Aliu home" class="brand" href="index.html"
+        >tefik aliu<span aria-hidden="true">.</span></a
+      >
+      <span class="header-role">SOFTWARE ENGINEER</span>
+      <button
+        aria-controls="site-nav"
+        aria-expanded="false"
+        class="menu-button"
+        hidden=""
+        type="button"
+      >
+        Menu <span aria-hidden="true">+</span>
+      </button>
+      <nav aria-label="Primary navigation" class="site-nav" id="site-nav">
+        <a data-section="projects" href="index.html#projects">Work</a
+        ><a data-section="engineering" href="index.html#engineering"
+          >Engineering</a
+        ><a data-section="about" href="index.html#about">About</a
+        ><a data-section="contact" href="index.html#contact">Contact</a>
+        <a
+          class="nav-cv"
+          href="assets/Tefik_Aliu_CV.pdf"
+          rel="noopener"
+          target="_blank"
+          >CV <span aria-hidden="true">↗</span></a
+        >
+        <a
+          aria-label="Läs på svenska"
+          class="language-link"
+          href="issuepilot.sv.html"
+          hreflang="sv"
+          lang="sv"
+          >Svenska</a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="case-hero shell" id="top">
+        <a class="back-link" href="index.html#projects">← Back to projects</a>
+        <p class="eyebrow">ISSUEPILOT / FULL-STACK</p>
+        <h1>The right access.<br>A traceable change<span>.</span></h1>
+        <div class="case-intro">
+          <p>
+            From an open CRUD workflow to an issue tracker with an optional
+            private mode: session login, three roles and history that follows
+            each change.
+          </p>
+          <div class="case-links">
+            <a
+              class="button primary"
+              href="https://issuepilot-tefik.onrender.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Open public demo ↗</a
+            ><a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Repository<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+        </div>
+        <dl class="case-meta">
+          <div>
+            <dt>Issue workflow</dt>
+            <dd>FastAPI · SQLite · JavaScript</dd>
+          </div>
+          <div>
+            <dt>Verification</dt>
+            <dd>API and browser tests</dd>
+          </div>
+          <div>
+            <dt>Access</dt>
+            <dd>Admin · Editor · Viewer</dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>One workspace, two modes</dd>
+          </div>
+        </dl>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">01 / BEHAVIOUR</p>
+          <div><h2>Who can change what?</h2></div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              The public demo stays open and uses sample data. Private
+              installations require login when private mode is enabled. The API
+              checks the session and role on each request.
+            </p>
+            <p>
+              A hidden button is not an access check. A viewer receives 403 even
+              when attempting an update directly through the API.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/blob/main/app/access.py"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Access checks<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <div class="endpoint-list">
+            <h3>Admin / Editor / Viewer</h3>
+            <dl>
+              <div>
+                <dt>Viewer</dt>
+                <dd>Reads issues, statistics and history.</dd>
+              </div>
+              <div>
+                <dt>Editor</dt>
+                <dd>Can also create and update issues.</dd>
+              </div>
+              <div>
+                <dt>Admin</dt>
+                <dd>
+                  Can also delete issues. Accounts are provisioned separately
+                  through a local CLI.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">02 / IMPLEMENTATION</p>
+          <div>
+            <h2>Issue and history.<br>One transaction.</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Each successful change records the actor, time and before/after
+              state. If history cannot be written, the issue mutation rolls back
+              too. Deleting an issue retains its history.
+            </p>
+            <p>
+              The interface shows changed fields and lets reviewers load older
+              events. Existing issues receive no invented history when the
+              database is upgraded.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/blob/main/app/history.py"
+              rel="noopener noreferrer"
+              target="_blank"
+              >History implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <figure class="system-figure">
+            <figcaption>
+              <span class="mono">ISSUEPILOT / WRITE PATH</span>
+            </figcaption>
+            <div class="system-node source-node">
+              <span aria-hidden="true" class="node-icon">→</span>
+              <div>
+                <b>Requested change</b><small>Session + role + CSRF</small>
+              </div>
+            </div>
+            <div class="flow-connector">
+              <span>BEGIN IMMEDIATE</span><span aria-hidden="true">↓</span>
+            </div>
+            <div class="system-node primary-node">
+              <span aria-hidden="true" class="node-icon">{ }</span>
+              <div><b>Issue + history event</b><small>SQLite</small></div>
+            </div>
+            <div class="diagram-foot"><span>COMMIT or ROLLBACK</span></div>
+          </figure>
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">03 / ENGINEERING CHOICES</p>
+          <div><h2>Small, explicit boundaries.</h2></div>
+        </div>
+        <div class="decision-grid">
+          <article class="decision">
+            <h3>Server-side sessions</h3>
+            <p>
+              Random session secrets, HttpOnly cookies and CSRF checks. Logout,
+              password reset and role changes revoke sessions.
+            </p>
+          </article>
+          <article class="decision">
+            <h3>Local account provisioning</h3>
+            <p>
+              An administrator creates accounts through a CLI. No public
+              registration or email password recovery.
+            </p>
+          </article>
+          <article class="decision">
+            <h3>SQLite and full snapshots</h3>
+            <p>
+              A shared transaction makes rollback explicit. Full snapshots cost
+              storage but keep changes easy to inspect.
+            </p>
+          </article>
+        </div>
+        <div class="case-links">
+          <a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/docs/access-and-history.md"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Private setup<span aria-hidden="true"> ↗</span></a
+          >
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">04 / VERIFICATION</p>
+          <div>
+            <h2>Test the actions<br>that must be denied.</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Tests cover anonymous requests, all three roles, CSRF, session
+              expiry, logout, login throttling and database migration. A
+              simulated storage failure verifies that issue and history writes
+              roll back together.
+            </p>
+            <p>
+              Browser tests start isolated instances and exercise both modes,
+              role-specific controls and mobile widths. They also run in GitHub
+              Actions.
+            </p>
+            <div class="case-links">
+              <a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_access_history.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >API and history tests<span aria-hidden="true"> ↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_browser_access.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Browser tests<span aria-hidden="true"> ↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/actions/workflows/tests.yml"
+                rel="noopener noreferrer"
+                target="_blank"
+                >CI results<span aria-hidden="true"> ↗</span></a
+              >
+            </div>
+          </div>
+          <aside class="endpoint-list">
+            <h3>Boundaries</h3>
+            <p>
+              One workspace, without multi-tenancy, MFA or SSO. Private
+              deployments require HTTPS and persistent storage. History is not
+              tamper-proof against database administrators. Deleted issue
+              content remains in history.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="next-project shell">
+        <p class="eyebrow">Keep exploring</p>
+        <a href="service-observability-lab.html"
+          >Service Observability Lab <span aria-hidden="true">→</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <span>© <span id="year">2026</span> Tefik Aliu</span
+      ><span>Software engineering / Sweden</span
+      ><a href="https://github.com/tefik-aliu" rel="noopener" target="_blank"
+        >GitHub ↗</a
+      ><a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>

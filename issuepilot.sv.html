@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>IssuePilot — Behörigheter och historik | Tefik Aliu</title>
+    <meta
+      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      name="description">
+    <meta content="#111311" name="theme-color">
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.sv.html"
+      rel="canonical">
+    <meta content="website" property="og:type">
+    <meta
+      content="IssuePilot — Behörigheter och historik | Tefik Aliu"
+      property="og:title">
+    <meta
+      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      property="og:description">
+    <meta
+      content="https://tefik-aliu.github.io/issuepilot.sv.html"
+      property="og:url">
+    <meta
+      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      property="og:image">
+    <meta content="1200" property="og:image:width">
+    <meta content="630" property="og:image:height">
+    <meta
+      content="Tefik Aliu — Software Engineer. Build systems. Ship software. Prove it works."
+      property="og:image:alt">
+    <meta content="summary_large_image" name="twitter:card">
+    <meta
+      content="IssuePilot — Behörigheter och historik | Tefik Aliu"
+      name="twitter:title">
+    <meta
+      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      name="twitter:description">
+    <meta
+      content="https://tefik-aliu.github.io/assets/social-preview.png"
+      name="twitter:image">
+    <link href="assets/favicon.svg" rel="icon" type="image/svg+xml">
+    <link href="styles.css?v=9ef9ef3a7e6d" rel="stylesheet">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "IssuePilot — Behörigheter och historik | Tefik Aliu",
+        "url": "https://tefik-aliu.github.io/issuepilot.sv.html",
+        "inLanguage": "sv",
+        "author": { "@type": "Person", "name": "Tefik Aliu" }
+      }
+    </script>
+    <script defer="" src="script.js?v=a198b939de59"></script>
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.html"
+      hreflang="en"
+      rel="alternate">
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.sv.html"
+      hreflang="sv"
+      rel="alternate">
+    <link
+      href="https://tefik-aliu.github.io/issuepilot.html"
+      hreflang="x-default"
+      rel="alternate">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
+    <header class="site-header shell">
+      <a aria-label="Tefik Aliu startsida" class="brand" href="index.sv.html"
+        >tefik aliu<span aria-hidden="true">.</span></a
+      >
+      <span class="header-role">MJUKVARUUTVECKLARE</span>
+      <button
+        aria-controls="site-nav"
+        aria-expanded="false"
+        class="menu-button"
+        hidden=""
+        type="button"
+      >
+        Meny<span aria-hidden="true">+</span>
+      </button>
+      <nav aria-label="Huvudnavigation" class="site-nav" id="site-nav">
+        <a data-section="projects" href="index.sv.html#projects">Projekt</a
+        ><a data-section="engineering" href="index.sv.html#engineering"
+          >Teknik</a
+        ><a data-section="about" href="index.sv.html#about">Om mig</a
+        ><a data-section="contact" href="index.sv.html#contact">Kontakt</a>
+        <a
+          class="nav-cv"
+          href="assets/Tefik_Aliu_CV_SV.pdf"
+          rel="noopener"
+          target="_blank"
+          >CV <span aria-hidden="true">↗</span></a
+        >
+        <a
+          aria-label="Read in English"
+          class="language-link"
+          href="issuepilot.html"
+          hreflang="en"
+          lang="en"
+          >English</a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <section class="case-hero shell" id="top">
+        <a class="back-link" href="index.sv.html#projects"
+          >← Tillbaka till projekten</a
+        >
+        <p class="eyebrow">ISSUEPILOT / FULL-STACK</p>
+        <h1>Rätt behörighet.<br>Spårbara ändringar<span>.</span></h1>
+        <div class="case-intro">
+          <p>
+            Från ett öppet CRUD-flöde till ett ärendesystem med ett valbart
+            privat läge: inloggning, tre roller och en historik som följer varje
+            ändring.
+          </p>
+          <div class="case-links">
+            <a
+              class="button primary"
+              href="https://issuepilot-tefik.onrender.com"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Öppna publik demo ↗</a
+            ><a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Kodarkiv<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+        </div>
+        <dl class="case-meta">
+          <div>
+            <dt>Ärendeflöde</dt>
+            <dd>FastAPI · SQLite · JavaScript</dd>
+          </div>
+          <div>
+            <dt>Verifiering</dt>
+            <dd>API- och webbläsartester</dd>
+          </div>
+          <div>
+            <dt>Åtkomst</dt>
+            <dd>Admin · Editor · Viewer</dd>
+          </div>
+          <div>
+            <dt>Omfattning</dt>
+            <dd>En arbetsyta, två driftlägen</dd>
+          </div>
+        </dl>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">01 / BETEENDE</p>
+          <div><h2>Vem får ändra vad?</h2></div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Den publika demon är fortfarande öppen och använder exempeldata.
+              Privata installationer kräver inloggning när det privata läget är
+              aktiverat. API:t kontrollerar både roll och session vid varje
+              anrop.
+            </p>
+            <p>
+              En dold knapp är ingen behörighetskontroll. En användare med
+              läsbehörighet får 403 även vid ett direkt försök att uppdatera via
+              API:t.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/blob/main/app/access.py"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Behörighetskontroll<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <div class="endpoint-list">
+            <h3>Admin / Editor / Viewer</h3>
+            <dl>
+              <div>
+                <dt>Viewer</dt>
+                <dd>Läser ärenden, statistik och historik.</dd>
+              </div>
+              <div>
+                <dt>Editor</dt>
+                <dd>Kan dessutom skapa och uppdatera ärenden.</dd>
+              </div>
+              <div>
+                <dt>Admin</dt>
+                <dd>
+                  Kan dessutom ta bort ärenden. Konton hanteras separat via ett
+                  lokalt CLI.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">02 / IMPLEMENTATION</p>
+          <div>
+            <h2>Ändring och historik.<br>Samma transaktion.</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Varje lyckad ändring sparar aktör, tid och tillstånd före och
+              efter. Om historiken inte går att skriva återställs även
+              ärendeändringen. Historiken finns kvar när ett ärende tas bort.
+            </p>
+            <p>
+              Gränssnittet visar ändrade fält och låter besökaren läsa äldre
+              händelser. Befintliga ärenden får ingen påhittad historik när
+              databasen uppgraderas.
+            </p>
+            <a
+              class="text-link"
+              href="https://github.com/tefik-aliu/issuepilot/blob/main/app/history.py"
+              rel="noopener noreferrer"
+              target="_blank"
+              >Historikens implementation<span aria-hidden="true"> ↗</span></a
+            >
+          </div>
+          <figure class="system-figure">
+            <figcaption>
+              <span class="mono">ISSUEPILOT / WRITE PATH</span>
+            </figcaption>
+            <div class="system-node source-node">
+              <span aria-hidden="true" class="node-icon">→</span>
+              <div>
+                <b>Begärd ändring</b><small>Session + roll + CSRF</small>
+              </div>
+            </div>
+            <div class="flow-connector">
+              <span>BEGIN IMMEDIATE</span><span aria-hidden="true">↓</span>
+            </div>
+            <div class="system-node primary-node">
+              <span aria-hidden="true" class="node-icon">{ }</span>
+              <div><b>Ärende + historikhändelse</b><small>SQLite</small></div>
+            </div>
+            <div class="diagram-foot"><span>COMMIT eller ROLLBACK</span></div>
+          </figure>
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">03 / TEKNISKA VAL</p>
+          <div><h2>Små, tydliga gränser.</h2></div>
+        </div>
+        <div class="decision-grid">
+          <article class="decision">
+            <h3>Sessioner på servern</h3>
+            <p>
+              Slumpade sessionsnycklar, HttpOnly-kakor och CSRF-kontroll.
+              Utloggning, lösenordsbyte och rollbyte återkallar sessioner.
+            </p>
+          </article>
+          <article class="decision">
+            <h3>Lokal kontohantering</h3>
+            <p>
+              Administratören skapar konton via CLI. Ingen publik registrering
+              eller lösenordsåterställning via e-post.
+            </p>
+          </article>
+          <article class="decision">
+            <h3>SQLite och fullständiga ögonblicksbilder</h3>
+            <p>
+              En gemensam transaktion gör återställning tydlig. Fullständiga
+              tillstånd tar mer plats men gör ändringar enkla att granska.
+            </p>
+          </article>
+        </div>
+        <div class="case-links">
+          <a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/docs/access-and-history.md"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Installera privat läge<span aria-hidden="true"> ↗</span></a
+          >
+        </div>
+      </section>
+      <section class="section shell case-section">
+        <div class="section-head">
+          <p class="eyebrow">04 / VERIFIERING</p>
+          <div>
+            <h2>Testa även det<br>som ska nekas.</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Tester täcker anonyma anrop, alla tre roller, CSRF,
+              sessionsutgång, utloggning, begränsade inloggningsförsök och
+              databasuppgradering. Ett simulerat lagringsfel kontrollerar att
+              både ärende och historik återställs.
+            </p>
+            <p>
+              Webbläsartester startar isolerade instanser och kör båda
+              driftlägena, kontrollerar rollernas gränssnitt och provar
+              mobilbredder. De körs också i GitHub Actions.
+            </p>
+            <div class="case-links">
+              <a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_access_history.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >API- och historiktester<span aria-hidden="true"> ↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_browser_access.py"
+                rel="noopener noreferrer"
+                target="_blank"
+                >Webbläsartester<span aria-hidden="true"> ↗</span></a
+              ><a
+                class="text-link"
+                href="https://github.com/tefik-aliu/issuepilot/actions/workflows/tests.yml"
+                rel="noopener noreferrer"
+                target="_blank"
+                >CI-resultat<span aria-hidden="true"> ↗</span></a
+              >
+            </div>
+          </div>
+          <aside class="endpoint-list">
+            <h3>Gränser</h3>
+            <p>
+              En arbetsyta, ingen multitenancy, MFA eller SSO. Privat drift
+              kräver HTTPS och beständig lagring. Historiken är inte
+              manipulationssäker för någon med databasåtkomst. Raderade ärendens
+              innehåll finns kvar i historiken.
+            </p>
+          </aside>
+        </div>
+      </section>
+      <section class="next-project shell">
+        <p class="eyebrow">Läs vidare</p>
+        <a href="service-observability-lab.sv.html"
+          >Service Observability Lab <span aria-hidden="true">→</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer shell">
+      <span>© <span id="year">2026</span> Tefik Aliu</span
+      ><span>Mjukvaruutveckling / Sverige</span
+      ><a href="https://github.com/tefik-aliu" rel="noopener" target="_blank"
+        >GitHub ↗</a
+      ><a href="#top">Till toppen ↑</a>
+    </footer>
+  </body>
+</html>
