@@ -6,14 +6,14 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Tefik Aliu — Software Engineer</title>
     <meta
-      content="Software developer with over 20 years in glass production. My projects: LinePulse for production data and IssuePilot for issue tracking."
+      content="Tefik Aliu is seeking a junior Python or test automation role. Independent projects with inspectable code, concurrent edits, permissions and automated tests."
       name="description">
     <meta content="#f5f2eb" name="theme-color">
     <link href="https://tefik-aliu.github.io/" rel="canonical">
     <meta content="website" property="og:type">
     <meta content="Tefik Aliu — Software Engineer" property="og:title">
     <meta
-      content="Software developer with over 20 years in glass production. My projects: LinePulse for production data and IssuePilot for issue tracking."
+      content="Tefik Aliu is seeking a junior Python or test automation role. Independent projects with inspectable code, concurrent edits, permissions and automated tests."
       property="og:description">
     <meta content="https://tefik-aliu.github.io/" property="og:url">
     <meta
@@ -27,12 +27,15 @@
     <meta content="summary_large_image" name="twitter:card">
     <meta content="Tefik Aliu — Software Engineer" name="twitter:title">
     <meta
-      content="Software developer with over 20 years in glass production. My projects: LinePulse for production data and IssuePilot for issue tracking."
+      content="Tefik Aliu is seeking a junior Python or test automation role. Independent projects with inspectable code, concurrent edits, permissions and automated tests."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-personal-en.png"
       name="twitter:image">
-    <link href="assets/favicon.svg?v=1474bed2ae98" rel="icon" type="image/svg+xml">
+    <link
+      href="assets/favicon.svg?v=1474bed2ae98"
+      rel="icon"
+      type="image/svg+xml">
     <link href="styles.css?v=105fdf5515b7" rel="stylesheet">
     <script type="application/ld+json">
       {
@@ -41,8 +44,8 @@
         "name": "Tefik Aliu",
         "url": "https://tefik-aliu.github.io/",
         "sameAs": ["https://github.com/tefik-aliu"],
-        "jobTitle": "Software Engineer",
-        "description": "Builds backend services, web applications, automation and data tooling with automated tests, CI and observability.",
+        "jobTitle": "Junior software developer",
+        "description": "Tefik Aliu is seeking a junior Python or test automation role. Independent projects with inspectable code, concurrent edits, permissions and automated tests.",
         "knowsAbout": [
           "Python",
           "FastAPI",
@@ -67,7 +70,7 @@
       href="https://tefik-aliu.github.io/"
       hreflang="x-default"
       rel="alternate">
-    <link href="signature.css?v=dd73d764dedc" rel="stylesheet">
+    <link href="signature.css?v=f061ff47b524" rel="stylesheet">
     <script defer src="signature.js?v=60df9ed9895c"></script>
   </head>
   <body class="portfolio-home">
@@ -111,7 +114,9 @@
         id="top"
       >
         <div class="intro-name">
-          <p class="intro-role">Software developer · Sweden</p>
+          <p class="intro-role">
+            Junior developer · Python &amp; test automation
+          </p>
           <h1 id="hero-title">Tefik Aliu</h1>
           <a class="intro-cv" href="assets/Tefik_Aliu_CV_EN.pdf"
             >Read my CV <span aria-hidden="true">↗</span></a
@@ -123,9 +128,9 @@
             build web applications and tools with Python and JavaScript.
           </p>
           <p>
-            Questions about downtime, scrap and troubleshooting carry over into
-            my projects. This is where I share what I have built and how it
-            works.
+            I am looking for a junior role in backend development or test
+            automation. These are independent projects, with code, tests and
+            examples of problems I have worked through.
           </p>
           <a class="button secondary" href="#projects"
             >See my work <span aria-hidden="true">↓</span></a
@@ -141,6 +146,47 @@
           <h2 id="work-title">Two projects to start with</h2>
           <p>Personal projects · Open source</p>
         </div>
+        <article aria-labelledby="issuepilot-title" class="selected-project">
+          <figure class="project-shot">
+            <a aria-label="Read about IssuePilot" href="issuepilot.html">
+              <img
+                alt="IssuePilot stops a stale status change and asks the user to load the latest version"
+                fetchpriority="high"
+                height="575"
+                loading="eager"
+                src="assets/demos/issuepilot-conflict.png"
+                width="834">
+            </a>
+            <figcaption>
+              From a local two-browser test with sample data.
+            </figcaption>
+          </figure>
+          <div class="selected-copy">
+            <p class="project-category">
+              Backend, browser interface &amp; tests
+            </p>
+            <h3 id="issuepilot-title">
+              <a href="issuepilot.html">IssuePilot</a>
+            </h3>
+            <p class="project-summary">
+              Two people edit the same issue. Which change gets saved?
+            </p>
+            <p>
+              In IssuePilot I added version checks that stop an old browser tab
+              from overwriting newer changes. The interface explains the
+              conflict and asks the user to review before trying again. Tests
+              run the flow in two separate browser sessions.
+            </p>
+            <p class="project-tools">FastAPI · SQLite · JavaScript · Pytest</p>
+            <div class="project-links">
+              <a href="issuepilot.html"
+                >About the project <span aria-hidden="true">→</span></a
+              ><a href="https://github.com/tefik-aliu/issuepilot"
+                >View the code <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </div>
+        </article>
         <article aria-labelledby="linepulse-title" class="selected-project">
           <figure class="project-shot">
             <a
@@ -149,9 +195,8 @@
             >
               <img
                 alt="LinePulse showing production metrics and simulation scenarios"
-                fetchpriority="high"
                 height="900"
-                loading="eager"
+                loading="lazy"
                 src="assets/demos/linepulse.png"
                 width="1280">
             </a>
@@ -174,40 +219,6 @@
                 >About the project <span aria-hidden="true">→</span></a
               ><a href="linepulse.html#demo"
                 >Watch the demo <span aria-hidden="true">↗</span></a
-              >
-            </div>
-          </div>
-        </article>
-        <article aria-labelledby="issuepilot-title" class="selected-project">
-          <figure class="project-shot">
-            <a aria-label="Read about IssuePilot" href="issuepilot.html">
-              <img
-                alt="IssuePilot open demo with issue list, priorities and status controls"
-                height="900"
-                loading="lazy"
-                src="assets/demos/issuepilot.png"
-                width="1280">
-            </a>
-            <figcaption>Open demo mode with sample issues.</figcaption>
-          </figure>
-          <div class="selected-copy">
-            <p class="project-category">Web application</p>
-            <h3 id="issuepilot-title">
-              <a href="issuepilot.html">IssuePilot</a>
-            </h3>
-            <p class="project-summary">
-              An issue tracker with permissions checked in the API.
-            </p>
-            <p>
-              It started with creating and updating issues. I then added a
-              private mode with sign-in, three roles and a history of changes.
-            </p>
-            <p class="project-tools">FastAPI · SQLite · JavaScript · Pytest</p>
-            <div class="project-links">
-              <a href="issuepilot.html"
-                >About the project <span aria-hidden="true">→</span></a
-              ><a href="https://github.com/tefik-aliu/issuepilot"
-                >View the code <span aria-hidden="true">↗</span></a
               >
             </div>
           </div>
@@ -302,7 +313,10 @@
       >
         <div>
           <h2 id="contact-title">Get in touch</h2>
-          <p>I am open to developer roles and collaborations.</p>
+          <p>
+            I am looking for a junior role in backend development or test
+            automation.
+          </p>
         </div>
         <div class="contact-details">
           <a class="email-address" href="mailto:Tefik.aliu@gmail.com"

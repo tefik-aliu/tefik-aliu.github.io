@@ -532,3 +532,20 @@ a:hover {
     font-size: 11px;
   }
 }
+
+.conflict-evidence {
+  margin: 0;
+  align-self: start;
+}
+.conflict-evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.conflict-evidence figcaption {
+  margin-top: 12px;
+  color: #56625f;
+  font-size: 13px;
+  line-height: 1.6;
+}

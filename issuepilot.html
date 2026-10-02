@@ -4,18 +4,18 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>IssuePilot — Access and history | Tefik Aliu</title>
+    <title>IssuePilot — Concurrent edits and permissions | Tefik Aliu</title>
     <meta
-      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      content="What happens when two users change the same issue? A concrete example of version checks, conflict handling and tests with FastAPI, SQLite and JavaScript."
       name="description">
     <meta content="#f5f2eb" name="theme-color">
     <link href="https://tefik-aliu.github.io/issuepilot.html" rel="canonical">
     <meta content="website" property="og:type">
     <meta
-      content="IssuePilot — Access and history | Tefik Aliu"
+      content="IssuePilot — Concurrent edits and permissions | Tefik Aliu"
       property="og:title">
     <meta
-      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      content="What happens when two users change the same issue? A concrete example of version checks, conflict handling and tests with FastAPI, SQLite and JavaScript."
       property="og:description">
     <meta
       content="https://tefik-aliu.github.io/issuepilot.html"
@@ -30,24 +30,30 @@
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta
-      content="IssuePilot — Access and history | Tefik Aliu"
+      content="IssuePilot — Concurrent edits and permissions | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="An issue workflow with session login, three roles and transactional change history. Inspect the implementation, tests and engineering tradeoffs."
+      content="What happens when two users change the same issue? A concrete example of version checks, conflict handling and tests with FastAPI, SQLite and JavaScript."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-personal-en.png"
       name="twitter:image">
-    <link href="assets/favicon.svg?v=1474bed2ae98" rel="icon" type="image/svg+xml">
+    <link
+      href="assets/favicon.svg?v=1474bed2ae98"
+      rel="icon"
+      type="image/svg+xml">
     <link href="styles.css?v=105fdf5515b7" rel="stylesheet">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "IssuePilot — Access and history | Tefik Aliu",
+        "name": "IssuePilot — Concurrent edits and permissions | Tefik Aliu",
         "url": "https://tefik-aliu.github.io/issuepilot.html",
         "inLanguage": "en",
-        "author": { "@type": "Person", "name": "Tefik Aliu" }
+        "author": {
+          "@type": "Person",
+          "name": "Tefik Aliu"
+        }
       }
     </script>
     <script defer src="script.js?v=a198b939de59"></script>
@@ -63,7 +69,7 @@
       href="https://tefik-aliu.github.io/issuepilot.html"
       hreflang="x-default"
       rel="alternate">
-    <link href="signature.css?v=dd73d764dedc" rel="stylesheet">
+    <link href="signature.css?v=f061ff47b524" rel="stylesheet">
     <script defer src="signature.js?v=60df9ed9895c"></script>
   </head>
   <body>
@@ -112,9 +118,9 @@
         <h1>IssuePilot</h1>
         <div class="case-intro">
           <p>
-            From an open CRUD workflow to an issue tracker with an optional
-            private mode: session login, three roles and history that follows
-            each change.
+            An independent issue tracker exploring questions that appear when
+            people share data: who may change it, how to avoid overwriting each
+            other, and what the history should record.
           </p>
           <div class="case-links">
             <a
@@ -150,6 +156,72 @@
             <dd>One workspace, two modes</dd>
           </div>
         </dl>
+      </section>
+      <section
+        aria-labelledby="conflict-heading"
+        class="section shell case-section"
+        id="concurrent-edits"
+      >
+        <div class="section-head">
+          <p class="eyebrow">A concrete problem</p>
+          <div>
+            <h2 id="conflict-heading">When an old tab tries to save</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Two users open an issue. The first sets it to “in progress”. The
+              second still sees “open” and chooses “resolved”. Previously, the
+              later request silently replaced the first change.
+            </p>
+            <p>
+              The client now sends the version it read. If the issue has
+              changed, the API returns 409. Neither the issue nor its history is
+              modified. The user loads the latest state and chooses again; the
+              interface never retries automatically.
+            </p>
+            <p>
+              API tests race two clients against the same version. Browser tests
+              check the conflict message, keyboard focus, review and a fresh
+              attempt. Deletion from a stale tab is also stopped.
+            </p>
+          </div>
+          <figure class="conflict-evidence">
+            <img
+              alt="IssuePilot stops a stale status change and asks the user to load the latest version"
+              height="575"
+              loading="lazy"
+              src="assets/demos/issuepilot-conflict.png"
+              width="834">
+            <figcaption>
+              From a local two-browser test with sample data.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="prose">
+          <p>
+            The check covers the whole issue, even when people edit different
+            fields. This keeps the behaviour understandable but can cause more
+            conflicts. SQLite suits this small demo; this is not a claim about
+            large-scale performance.
+          </p>
+        </div>
+        <div class="case-links">
+          <a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/docs/concurrent-edits.md"
+            >Design decisions and API contract ↗</a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_concurrency.py"
+            >Concurrent-request test ↗</a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_browser_access.py"
+            >Browser test ↗</a
+          >
+        </div>
       </section>
       <section class="section shell case-section">
         <div class="section-head">
@@ -239,7 +311,10 @@
             </div>
             <div class="system-node primary-node">
               <span aria-hidden="true" class="node-icon">{ }</span>
-              <div><b>Issue + history event</b><small>SQLite</small></div>
+              <div>
+                <b>Issue + history event</b
+                ><small>SQLite · version check</small>
+              </div>
             </div>
             <div class="diagram-foot"><span>COMMIT or ROLLBACK</span></div>
           </figure>
