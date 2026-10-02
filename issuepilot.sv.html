@@ -4,9 +4,11 @@
   <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <title>IssuePilot — Behörigheter och historik | Tefik Aliu</title>
+    <title>
+      IssuePilot — Samtidiga ändringar och behörigheter | Tefik Aliu
+    </title>
     <meta
-      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      content="Vad händer när två användare ändrar samma ärende? Ett konkret exempel på versionskontroll, konflikthantering och tester i FastAPI, SQLite och JavaScript."
       name="description">
     <meta content="#f5f2eb" name="theme-color">
     <link
@@ -14,10 +16,10 @@
       rel="canonical">
     <meta content="website" property="og:type">
     <meta
-      content="IssuePilot — Behörigheter och historik | Tefik Aliu"
+      content="IssuePilot — Samtidiga ändringar och behörigheter | Tefik Aliu"
       property="og:title">
     <meta
-      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      content="Vad händer när två användare ändrar samma ärende? Ett konkret exempel på versionskontroll, konflikthantering och tester i FastAPI, SQLite och JavaScript."
       property="og:description">
     <meta
       content="https://tefik-aliu.github.io/issuepilot.sv.html"
@@ -32,24 +34,30 @@
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta
-      content="IssuePilot — Behörigheter och historik | Tefik Aliu"
+      content="IssuePilot — Samtidiga ändringar och behörigheter | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="Ett ärendeflöde med sessionsinloggning, tre roller och transaktionell ändringshistorik. Se implementation, tester och tekniska avvägningar."
+      content="Vad händer när två användare ändrar samma ärende? Ett konkret exempel på versionskontroll, konflikthantering och tester i FastAPI, SQLite och JavaScript."
       name="twitter:description">
     <meta
       content="https://tefik-aliu.github.io/assets/social-personal-sv.png"
       name="twitter:image">
-    <link href="assets/favicon.svg?v=1474bed2ae98" rel="icon" type="image/svg+xml">
+    <link
+      href="assets/favicon.svg?v=1474bed2ae98"
+      rel="icon"
+      type="image/svg+xml">
     <link href="styles.css?v=105fdf5515b7" rel="stylesheet">
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "IssuePilot — Behörigheter och historik | Tefik Aliu",
+        "name": "IssuePilot — Samtidiga ändringar och behörigheter | Tefik Aliu",
         "url": "https://tefik-aliu.github.io/issuepilot.sv.html",
         "inLanguage": "sv",
-        "author": { "@type": "Person", "name": "Tefik Aliu" }
+        "author": {
+          "@type": "Person",
+          "name": "Tefik Aliu"
+        }
       }
     </script>
     <script defer src="script.js?v=a198b939de59"></script>
@@ -65,7 +73,7 @@
       href="https://tefik-aliu.github.io/issuepilot.html"
       hreflang="x-default"
       rel="alternate">
-    <link href="signature.css?v=dd73d764dedc" rel="stylesheet">
+    <link href="signature.css?v=f061ff47b524" rel="stylesheet">
     <script defer src="signature.js?v=60df9ed9895c"></script>
   </head>
   <body>
@@ -116,9 +124,9 @@
         <h1>IssuePilot</h1>
         <div class="case-intro">
           <p>
-            Från ett öppet CRUD-flöde till ett ärendesystem med ett valbart
-            privat läge: inloggning, tre roller och en historik som följer varje
-            ändring.
+            Ett eget ärendesystem där jag arbetar med frågor som uppstår när
+            flera använder samma data: vem får ändra, hur undviker man att
+            skriva över varandra och vad ska historiken visa?
           </p>
           <div class="case-links">
             <a
@@ -154,6 +162,74 @@
             <dd>En arbetsyta, två driftlägen</dd>
           </div>
         </dl>
+      </section>
+      <section
+        aria-labelledby="conflict-heading"
+        class="section shell case-section"
+        id="concurrent-edits"
+      >
+        <div class="section-head">
+          <p class="eyebrow">Ett konkret problem</p>
+          <div>
+            <h2 id="conflict-heading">När en gammal flik försöker spara</h2>
+          </div>
+        </div>
+        <div class="case-split">
+          <div class="prose">
+            <p>
+              Två användare öppnar ett ärende. Den första sätter det till
+              ”pågår”. Den andra ser fortfarande ”öppet” och väljer ”löst”.
+              Tidigare skrev det senare anropet över den första ändringen utan
+              förvarning.
+            </p>
+            <p>
+              Nu skickar klienten med den version den har läst. Om ärendet har
+              ändrats svarar API:t med 409. Ingen data eller historik skrivs.
+              Användaren får läsa det senaste läget och välja igen; gränssnittet
+              gör inget automatiskt återförsök.
+            </p>
+            <p>
+              API-tester låter två klienter försöka spara samma version
+              samtidigt. Webbläsartester kontrollerar konfliktmeddelandet,
+              tangentbordsfokus, granskning och ett nytt försök. Även
+              borttagning från en gammal flik stoppas.
+            </p>
+          </div>
+          <figure class="conflict-evidence">
+            <img
+              alt="IssuePilot stoppar en gammal statusändring och ber användaren läsa den senaste versionen"
+              height="575"
+              loading="lazy"
+              src="assets/demos/issuepilot-conflict.png"
+              width="834">
+            <figcaption>
+              Från ett lokalt test med två webbläsarsessioner och exempeldata.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="prose">
+          <p>
+            Kontrollen gäller hela ärendet, även om två personer ändrar olika
+            fält. Det gör beteendet enkelt att förstå, men kan ge fler
+            konflikter. SQLite passar den lilla demon; det här är inget
+            påstående om prestanda i stora system.
+          </p>
+        </div>
+        <div class="case-links">
+          <a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/docs/concurrent-edits.md"
+            >Tekniska val och API-kontrakt ↗</a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_concurrency.py"
+            >Testet med samtidiga anrop ↗</a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/issuepilot/blob/main/tests/test_browser_access.py"
+            >Webbläsartestet ↗</a
+          >
+        </div>
       </section>
       <section class="section shell case-section">
         <div class="section-head">
@@ -245,7 +321,10 @@
             </div>
             <div class="system-node primary-node">
               <span aria-hidden="true" class="node-icon">{ }</span>
-              <div><b>Ärende + historikhändelse</b><small>SQLite</small></div>
+              <div>
+                <b>Ärende + historikhändelse</b
+                ><small>SQLite · versionskontroll</small>
+              </div>
             </div>
             <div class="diagram-foot"><span>COMMIT eller ROLLBACK</span></div>
           </figure>
