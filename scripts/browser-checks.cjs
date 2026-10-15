@@ -20,6 +20,7 @@ const widths = [360, 390, 768, 1024, 1440, 1920];
 (async () => {
   const browser = await chromium.launch({
     headless: true,
+    executablePath: process.env.BROWSER_EXECUTABLE_PATH || undefined,
     ...(process.env.BROWSER_CHANNEL
       ? { channel: process.env.BROWSER_CHANNEL }
       : {}),

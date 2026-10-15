@@ -1,0 +1,118 @@
+{
+  "name": "Tefik Aliu",
+  "email": "Tefik.aliu@gmail.com",
+  "portfolio": "https://tefik-aliu.github.io/",
+  "github": "https://github.com/tefik-aliu",
+  "content_notes": {
+    "reviewed": "2026-10-15",
+    "personal_facts": "Employment, education and language levels are preserved from the existing EN/SV CVs. Do not infer employment dates, software employment, seniority or formal computing qualifications.",
+    "project_scope": "These are independent portfolio projects. LinePulse uses synthetic data. Deployment definitions and lab integrations do not demonstrate production operations or customer outcomes.",
+    "typescript_scope": "TypeScript is used for browser tests; the application interfaces use JavaScript.",
+    "sources": [
+      "https://github.com/tefik-aliu/issuepilot",
+      "https://github.com/tefik-aliu/linepulse-industrial-intelligence",
+      "https://github.com/tefik-aliu/service-observability-lab",
+      "https://github.com/tefik-aliu/ops-report-automator"
+    ]
+  },
+  "en": {
+    "title": "Software & web developer",
+    "location": "Sweden",
+    "profile": "I build web applications, APIs and data tools with Python and JavaScript. My independent projects connect browser interfaces, databases, reporting and service tooling, with automated checks for critical behaviour. Open to software and web development roles across applications, data automation and developer tools.",
+    "skills_heading": "Technical skills demonstrated in projects",
+    "skills": [
+      ["Web & applications", "Python, FastAPI, JavaScript, HTML, CSS, REST APIs."],
+      ["Data & services", "SQL, SQLite, PostgreSQL, SQLAlchemy, Pandas, OpenPyXL."],
+      ["Quality & delivery", "Pytest, Playwright, TypeScript (browser tests), Git, GitHub Actions, Docker."]
+    ],
+    "projects_heading": "Independent development projects",
+    "overview_label": "Project overview",
+    "code_label": "Source & tests",
+    "projects": [
+      {
+        "name": "IssuePilot",
+        "focus": "Web application, access control & data integrity",
+        "body": "Issue tracker with a JavaScript interface, FastAPI and SQLite. Search, filters, role-based access and transactional history. Version checks reject stale edits; tests cover concurrent requests, two browser sessions and rollback on storage failure.",
+        "overview": "https://tefik-aliu.github.io/issuepilot.html",
+        "source": "https://github.com/tefik-aliu/issuepilot"
+      },
+      {
+        "name": "LinePulse",
+        "focus": "Interactive dashboard, analytics & reporting",
+        "body": "Simulation with a browser dashboard, FastAPI and SQLAlchemy persistence. Synthetic events feed metrics, rule-based alerts and Excel reports. Tests check calculations, API behaviour and user flows.",
+        "overview": "https://tefik-aliu.github.io/linepulse.html",
+        "source": "https://github.com/tefik-aliu/linepulse-industrial-intelligence"
+      },
+      {
+        "name": "Service Observability Lab",
+        "focus": "Service reliability & operational tooling",
+        "body": "FastAPI job-state API with a JavaScript dashboard. Persistent idempotency supports safe retries without duplicate records; tests cover SQLite and PostgreSQL. Separate health/readiness checks, Prometheus metrics and Docker Compose integration.",
+        "overview": "https://tefik-aliu.github.io/service-observability-lab.html",
+        "source": "https://github.com/tefik-aliu/service-observability-lab"
+      },
+      {
+        "name": "OpsReportAutomator",
+        "focus": "Data validation & report automation",
+        "body": "Python CLI validates CSV/Excel input, aggregates data by day and department, and generates a four-sheet Excel workbook with charts plus an HTML report. Pandas and OpenPyXL; tests check calculations and generated workbook structure.",
+        "source": "https://github.com/tefik-aliu/ops-report-automator"
+      }
+    ],
+    "employment_heading": "Employment experience",
+    "employment_title": "Saint-Gobain, Sweden | Glass production & quality operations | 20+ years",
+    "employment_body": "Machine operation, quality control and systematic troubleshooting. Diagnosed faults under time pressure and collaborated on practical fixes to support reliable production.",
+    "education_heading": "Education & languages",
+    "education_body": "Certified Personnel Specialist (Personalvetare). Additional studies: Administration 1-2; Information & Communication.",
+    "languages_label": "Languages",
+    "languages": "Swedish and Albanian - fluent; English - professional working proficiency."
+  },
+  "sv": {
+    "title": "Mjukvaru- och webbutvecklare",
+    "location": "Sverige",
+    "profile": "Jag bygger webbapplikationer, API:er och dataverktyg med Python och JavaScript. Mina egna projekt kopplar ihop gränssnitt, databaser, rapportering och driftverktyg, med automatiska kontroller av viktiga funktioner. Öppen för utvecklarroller inom mjukvara, webb, dataautomation och utvecklingsverktyg.",
+    "skills_heading": "Teknisk kompetens visad i projekten",
+    "skills": [
+      ["Webb och applikationer", "Python, FastAPI, JavaScript, HTML, CSS, REST-API:er."],
+      ["Data och tjänster", "SQL, SQLite, PostgreSQL, SQLAlchemy, Pandas, OpenPyXL."],
+      ["Kvalitet och leverans", "Pytest, Playwright, TypeScript (webbläsartester), Git, GitHub Actions, Docker."]
+    ],
+    "projects_heading": "Egna utvecklingsprojekt",
+    "overview_label": "Projektbeskrivning",
+    "code_label": "Källkod och tester",
+    "projects": [
+      {
+        "name": "IssuePilot",
+        "focus": "Webbapplikation, behörigheter och dataintegritet",
+        "body": "Ärendesystem med JavaScript-gränssnitt, FastAPI och SQLite. Sökning, filter, rollstyrd åtkomst och transaktionssäker historik. Versionskontroller avvisar inaktuella ändringar; tester täcker samtidiga anrop, två webbläsarsessioner och återställning vid lagringsfel.",
+        "overview": "https://tefik-aliu.github.io/issuepilot.sv.html",
+        "source": "https://github.com/tefik-aliu/issuepilot"
+      },
+      {
+        "name": "LinePulse",
+        "focus": "Interaktiv webbpanel, analys och rapportering",
+        "body": "Simuleringsprojekt med webbpanel, FastAPI och SQLAlchemy. Syntetiska händelser blir mätvärden, regelbaserade larm och Excel-rapporter. Tester kontrollerar beräkningar, API och användarflöden.",
+        "overview": "https://tefik-aliu.github.io/linepulse.sv.html",
+        "source": "https://github.com/tefik-aliu/linepulse-industrial-intelligence"
+      },
+      {
+        "name": "Service Observability Lab",
+        "focus": "Tillförlitliga tjänster och driftverktyg",
+        "body": "FastAPI-API för jobbstatus med JavaScript-panel. Beständig idempotens gör att återförsök inte skapar dubbletter; tester täcker SQLite och PostgreSQL. Separata health/readiness-kontroller, Prometheus-mätvärden och Docker Compose-integration.",
+        "overview": "https://tefik-aliu.github.io/service-observability-lab.sv.html",
+        "source": "https://github.com/tefik-aliu/service-observability-lab"
+      },
+      {
+        "name": "OpsReportAutomator",
+        "focus": "Datavalidering och automatiska rapporter",
+        "body": "Python-CLI som validerar CSV/Excel, summerar data per dag och avdelning och skapar en Excel-arbetsbok med fyra blad och diagram samt en HTML-rapport. Pandas och OpenPyXL; tester kontrollerar beräkningar och arbetsbokens struktur.",
+        "source": "https://github.com/tefik-aliu/ops-report-automator"
+      }
+    ],
+    "employment_heading": "Arbetslivserfarenhet",
+    "employment_title": "Saint-Gobain, Sverige | Glasproduktion och kvalitetsarbete | Över 20 år",
+    "employment_body": "Maskindrift, kvalitetskontroll och systematisk felsökning. Diagnostiserat fel under tidspress och samarbetat kring praktiska åtgärder för stabil produktion.",
+    "education_heading": "Utbildning och språk",
+    "education_body": "Diplomerad personalvetare. Kompletterande studier: Administration 1-2; Information och kommunikation.",
+    "languages_label": "Språk",
+    "languages": "Svenska och albanska - flytande; engelska - professionell arbetsnivå."
+  }
+}

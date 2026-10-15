@@ -4,6 +4,7 @@ const base = process.env.BASE_URL || "http://127.0.0.1:4173";
 (async () => {
   const browser = await chromium.launch({
     channel: process.env.BROWSER_CHANNEL || undefined,
+    executablePath: process.env.BROWSER_EXECUTABLE_PATH || undefined,
   });
   try {
     for (const lang of ["en", "sv"]) {
