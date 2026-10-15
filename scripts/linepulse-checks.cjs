@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const {chromium} = require('playwright');
 const base = process.env.BASE_URL || 'http://127.0.0.1:4173';
 (async()=>{
- const browser=await chromium.launch({channel:process.env.BROWSER_CHANNEL || undefined});
+ const browser=await chromium.launch({executablePath:process.env.BROWSER_EXECUTABLE_PATH || undefined,channel:process.env.BROWSER_CHANNEL || undefined});
  try {
   for(const language of ['en','sv']) {
    const page=await browser.newPage({viewport:{width:390,height:844}});

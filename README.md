@@ -4,7 +4,7 @@ A static portfolio at https://tefik-aliu.github.io/. The website connects select
 
 ## Pages
 
-- `index.html` — personal introduction, two selected projects, background and contact.
+- `index.html` — software/web development profile, IssuePilot and Service Observability Lab, further projects, working approach and contact.
 - `issuepilot.html` — roles, sessions and transactional history case study.
 - `linepulse.html` — event simulation, analytics, reporting and verification case study.
 - `service-observability-lab.html` — service topology, operational contracts and quality gates.
@@ -40,7 +40,7 @@ Run the dependency-free structural and local-link check:
 python scripts/validate_site.py
 ```
 
-Browser checks are in `scripts/browser-checks.cjs`. They require Playwright in the environment and a local HTTP server on port 4173. Set `BROWSER_CHANNEL=msedge` to use installed Edge, or leave it unset for Playwright Chromium.
+Browser checks are in `scripts/browser-checks.cjs`. They require Playwright in the environment and a local HTTP server on port 4173. Set `BROWSER_CHANNEL=msedge` to use installed Edge, `BROWSER_EXECUTABLE_PATH` for another local Chromium executable, or leave both unset for Playwright Chromium.
 
 ```sh
 node scripts/browser-checks.cjs
@@ -55,6 +55,8 @@ The browser checks cover fourteen English/Swedish pages at 360, 390, 768, 1024, 
 ## Content maintenance
 
 - CVs are available in English and Swedish at `assets/Tefik_Aliu_CV_EN.pdf` and `assets/Tefik_Aliu_CV_SV.pdf`. The original CV URL remains an English alias.
+- `content/cv.json` is the bilingual CV source. Run `python scripts/build_cvs.py` with ReportLab installed to regenerate all three CV paths; render and review both languages before committing.
+- `docs/profile-evidence.md` records the reviewed project revisions, supported claims, verification and limits behind the profile. Keep project experience separate from employment history.
 - All PDFs and the original profile image remain available at their existing paths.
 - When changing page titles or descriptions, also update canonical, Open Graph, Twitter and JSON-LD metadata. Keep `sitemap.xml` in sync with public pages.
 - The social preview is a locally generated 1200 × 630 PNG, with no remote assets.
@@ -73,7 +75,9 @@ When changing CSS or JavaScript, refresh their content version parameters in all
 
 ## Personal portfolio design
 
-`signature.css` supplies the shared paper-colored palette, editorial typography and compact homepage. The homepage introduces Tefik's industrial background and shows two projects with real screenshots. Technical diagrams and evidence remain on the linked case pages. `signature.js` only enhances email copying; navigation, content, project links and contact work without JavaScript. Social previews are local 1200 × 630 images in both languages.
+`signature.css` supplies the shared paper-colored palette, editorial typography and compact homepage. The homepage leads with software and web development, with two systems shown through real screenshots. Further work covers reporting, data dashboards, test tooling and this responsive bilingual website. Employment history remains separate from independent software projects. Technical diagrams and evidence remain on the linked case pages. `signature.js` only enhances email copying; navigation, content, project links and contact work without JavaScript.
+
+Social previews are local 1200 × 630 images in both languages. Run `node scripts/generate-social-previews.cjs` with Playwright and Chromium installed to regenerate them from the embedded HTML/CSS. The script makes no network requests.
 
 Run `node scripts/signature-checks.cjs` for project navigation, clipboard fallback, stable initial layout and no-JavaScript checks. The test stubs clipboard writes so it does not alter the system clipboard.
 

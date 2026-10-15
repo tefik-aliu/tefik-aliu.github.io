@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Service Observability Lab — Case Study | Tefik Aliu</title>
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="A FastAPI service with safe retries, database transactions and operational signals. Inspect the implementation and verified SQLite, PostgreSQL and browser tests."
       name="description">
     <meta content="#f5f2eb" name="theme-color">
     <link
@@ -17,28 +17,28 @@
       content="Service Observability Lab — Case Study | Tefik Aliu"
       property="og:title">
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="A FastAPI service with safe retries, database transactions and operational signals. Inspect the implementation and verified SQLite, PostgreSQL and browser tests."
       property="og:description">
     <meta
       content="https://tefik-aliu.github.io/service-observability-lab.html"
       property="og:url">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-personal-en.png"
+      content="https://tefik-aliu.github.io/assets/social-software-en.png"
       property="og:image">
     <meta content="1200" property="og:image:width">
     <meta content="630" property="og:image:height">
     <meta
-      content="Tefik Aliu — Software developer. LinePulse and IssuePilot."
+      content="Tefik Aliu — Software and web development. Web applications, APIs, data and automation."
       property="og:image:alt">
     <meta content="summary_large_image" name="twitter:card">
     <meta
       content="Service Observability Lab — Case Study | Tefik Aliu"
       name="twitter:title">
     <meta
-      content="FastAPI, PostgreSQL, metrics, tracing and deployment contracts. Inspect the architecture, quality gates and implementation of Service Observability Lab."
+      content="A FastAPI service with safe retries, database transactions and operational signals. Inspect the implementation and verified SQLite, PostgreSQL and browser tests."
       name="twitter:description">
     <meta
-      content="https://tefik-aliu.github.io/assets/social-personal-en.png"
+      content="https://tefik-aliu.github.io/assets/social-software-en.png"
       name="twitter:image">
     <link href="assets/favicon.svg?v=1474bed2ae98" rel="icon" type="image/svg+xml">
     <link href="styles.css?v=105fdf5515b7" rel="stylesheet">
@@ -95,7 +95,7 @@
         ><a data-section="contact" href="index.html#contact">Contact</a>
         <a
           class="nav-cv"
-          href="assets/Tefik_Aliu_CV.pdf"
+          href="assets/Tefik_Aliu_CV_EN.pdf"
           rel="noopener"
           target="_blank"
           >CV <span aria-hidden="true">↗</span></a
@@ -117,9 +117,9 @@
         <h1>Service<br>Observability Lab</h1>
         <div class="case-intro">
           <p>
-            A job-management service designed with operational signals,
-            automated verification and deployment configuration alongside the
-            API.
+            An API and web dashboard that keep a lost network response from
+            creating a duplicate job record. Database transactions, explicit
+            retries and operational signals make the behaviour inspectable.
           </p>
           <div class="case-links">
             <a
@@ -167,21 +167,22 @@
           <div class="prose">
             <h3>The problem</h3>
             <p>
-              An endpoint can return a successful response while the service
-              remains difficult to diagnose. This project adds dependency
-              checks, request metrics and trace instrumentation to a small job
-              API.
+              The server saves a job, but the browser never receives the
+              response. Repeating an ordinary creation request can save the
+              same job twice. This project makes that uncertain outcome
+              recoverable and exposes signals for diagnosing the service.
             </p>
             <h3>The implementation</h3>
             <p>
-              FastAPI handles a queued, running, completed or failed job
-              lifecycle. PostgreSQL stores state in the Compose stack;
-              Prometheus collects metrics, Grafana presents them, and an
-              optional OpenTelemetry exporter sends traces to a collector.
+              FastAPI stores a job and its creation receipt in one database
+              transaction. An optional Idempotency-Key lets a retry recover
+              the original response; a different title with the same key returns
+              409. PostgreSQL stores state in Compose; Prometheus, Grafana and
+              optional OTLP tracing provide operational signals.
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/docker-compose.yml"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/docker-compose.yml"
               rel="noopener noreferrer"
               target="_blank"
               >Compose topology<span aria-hidden="true"> ↗</span></a
@@ -190,7 +191,7 @@
           <figure class="system-figure">
             <figcaption><span class="mono">SERVICE TOPOLOGY</span></figcaption>
             <div class="system-node">
-              <b>Browser / API client</b><small>Job lifecycle</small>
+              <b>Browser / API client</b><small>Creation and explicit retry</small>
             </div>
             <div class="flow-connector">
               <span>HTTP / JSON</span><span aria-hidden="true">↓</span>
@@ -204,7 +205,7 @@
               ><span aria-hidden="true">↓</span>
             </div>
             <div class="system-outputs">
-              <div><b>PostgreSQL</b><small>Job state</small></div>
+              <div><b>PostgreSQL</b><small>Job state + receipts</small></div>
               <div><b>Prometheus</b><small>→ Grafana</small></div>
               <div><b>OTLP</b><small>→ Collector</small></div>
             </div>
@@ -218,19 +219,20 @@
         <div class="section-head">
           <p class="eyebrow">Design decisions</p>
           <div>
-            <h2>Health, readiness and metrics</h2>
+            <h2>Safe retries and useful failure signals</h2>
           </div>
         </div>
         <div class="decision-grid">
           <article class="decision">
-            <h3>An application factory</h3>
+            <h3>One transaction, one receipt</h3>
             <p>
-              create_app() accepts a database URL. Tests can isolate persistence
-              with SQLite while the container stack uses PostgreSQL.
+              A database uniqueness constraint reserves the operation key.
+              The job and receipt commit together; a failed transaction rolls
+              both back. Concurrent retries reuse the saved receipt.
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/app/job_creation.py"
               rel="noopener noreferrer"
               target="_blank"
               >Inspect implementation<span aria-hidden="true"> ↗</span></a
@@ -239,13 +241,14 @@
           <article class="decision">
             <h3>Health and readiness</h3>
             <p>
-              /health identifies a responding process. /ready executes a
-              database query. Kubernetes manifests bind them to separate
-              liveness and readiness probes.
+              /ready queries the database and returns 503 with a stable
+              message when it is unavailable. /health still responds. A
+              regression test verifies failure, recovery and that private
+              database exception details stay out of the response.
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/k8s/app.yaml"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/tests/test_api.py"
               rel="noopener noreferrer"
               target="_blank"
               >Inspect implementation<span aria-hidden="true"> ↗</span></a
@@ -259,21 +262,23 @@
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/metrics.py"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/app/metrics.py"
               rel="noopener noreferrer"
               target="_blank"
               >Inspect implementation<span aria-hidden="true"> ↗</span></a
             >
           </article>
           <article class="decision">
-            <h3>Tracing behind configuration</h3>
+            <h3>A deliberate retry in the browser</h3>
             <p>
-              OTLP export is enabled through an environment variable. Without an
-              endpoint, the service runs without tracing infrastructure.
+              After an uncertain response, the form preserves its title and
+              operation key and offers Retry save. The browser test lets the
+              server commit, drops the response, then verifies one saved job
+              after the retry.
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/telemetry.py"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/qa/service.spec.ts"
               rel="noopener noreferrer"
               target="_blank"
               >Inspect implementation<span aria-hidden="true"> ↗</span></a
@@ -285,7 +290,7 @@
         <div class="section-head">
           <p class="eyebrow">Quality gates</p>
           <div>
-            <h2>Technical decisions</h2>
+            <h2>Verified behaviour</h2>
           </div>
         </div>
         <section aria-label="Quality gates" class="table-wrap" tabindex="0">
@@ -297,53 +302,70 @@
               <tr>
                 <th scope="col">Gate</th>
                 <th scope="col">Behaviour covered</th>
-                <th scope="col">Execution</th>
+                <th scope="col">Result / execution</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row">Ruff + Pytest</th>
                 <td>
-                  Python checks; health, readiness, validation, job lifecycle
-                  and metrics
+                  Health/readiness, validation, job lifecycle, metrics and
+                  retry contracts with SQLite
                 </td>
-                <td>GitHub Actions</td>
+                <td>17 tests passed; lint passed</td>
               </tr>
               <tr>
                 <th scope="row">TypeScript + Playwright</th>
-                <td>Browser workflow and service endpoint checks</td>
-                <td>GitHub Actions</td>
+                <td>Job workflow, lost-response retry, metrics and safe text rendering at mobile width</td>
+                <td>4 tests passed; typecheck passed</td>
+              </tr>
+              <tr>
+                <th scope="row">PostgreSQL 16</th>
+                <td>The same 12 retry cases, including races, rollback and restart</td>
+                <td>12 tests passed</td>
               </tr>
               <tr>
                 <th scope="row">k6</th>
-                <td>Error rate and p95 latency thresholds</td>
-                <td>On demand</td>
+                <td>Defined error-rate and p95 thresholds for /health</td>
+                <td>On demand; no benchmark result claimed</td>
               </tr>
             </tbody>
           </table>
         </section>
+        <p class="small-note">
+          Results from the <a href="https://github.com/tefik-aliu/service-observability-lab/actions/runs/36991272179" rel="noopener noreferrer" target="_blank">successful CI run on 2 October 2026</a>,
+          commit <a href="https://github.com/tefik-aliu/service-observability-lab/commit/18f6e6da090982d341ee03bba0defb7539d5445a" rel="noopener noreferrer" target="_blank">18f6e6d</a>;
+          verified on 15 October 2026. The PostgreSQL run repeats 12 of the
+          Python cases against a second database.
+        </p>
         <div class="inline-links">
           <a
             class="text-link"
-            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/.github/workflows/ci.yml"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/.github/workflows/ci.yml"
             rel="noopener noreferrer"
             target="_blank"
             >CI workflow<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
-            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/tests/test_api.py"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/tests/test_api.py"
             rel="noopener noreferrer"
             target="_blank"
             >API tests<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
-            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/service.spec.ts"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/tests/test_idempotency.py"
+            rel="noopener noreferrer"
+            target="_blank"
+            >Retry contract tests<span aria-hidden="true"> ↗</span></a
+          ><a
+            class="text-link"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/qa/service.spec.ts"
             rel="noopener noreferrer"
             target="_blank"
             >Browser tests<span aria-hidden="true"> ↗</span></a
           ><a
             class="text-link"
-            href="https://github.com/tefik-aliu/service-observability-lab/blob/main/qa/load/k6.js"
+            href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/qa/load/k6.js"
             rel="noopener noreferrer"
             target="_blank"
             >Load-test contract<span aria-hidden="true"> ↗</span></a
@@ -354,35 +376,54 @@
         <div class="section-head">
           <p class="eyebrow">Source excerpt</p>
           <div>
-            <h2>The database check in code</h2>
+            <h2>Recovering the original response</h2>
           </div>
         </div>
         <div class="code-proof">
           <div class="proof-header">
-            <span>app/main.py · L61–71</span
+            <span>app/job_creation.py · L9–34 · 18f6e6d</span
             ><a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/blob/main/app/main.py#L61-L71"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/app/job_creation.py#L9-L34"
               rel="noopener noreferrer"
               target="_blank"
               >Source<span aria-hidden="true"> ↗</span></a
             >
           </div>
           <pre
-            aria-label="app/main.py source excerpt"
+            aria-label="app/job_creation.py source excerpt"
             tabindex="0"
-          ><code>    @app.get("/health")
-    def health() -&gt; dict[str, str]:
-        return {"status": "ok", "service": "service-observability-lab"}
-
-    @app.get("/ready")
-    def readiness(db: Session = db_dependency) -&gt; dict[str, str]:
-        db.execute(text("SELECT 1"))
-        return {"status": "ready", "database": "connected"}</code></pre>
+          ><code>def create_once(db: Session, title: str, key: str | None) -&gt; tuple[dict, bool]:
+    """Commit a job and its receipt together; the unique key arbitrates races."""
+    receipt = JobRequest(key=key, title=title, response={}) if key else None
+    try:
+        if receipt is not None:
+            db.add(receipt)
+            db.flush()  # Reserve the key before creating the job.
+        job = Job(title=title, status="queued")
+        db.add(job)
+        db.flush()
+        body = JobRead.model_validate(job).model_dump(mode="json")
+        if receipt is not None:
+            receipt.response = body
+        db.commit()
+        return body, False
+    except IntegrityError:
+        db.rollback()
+        existing = db.get(JobRequest, key) if key else None
+        if existing is None:
+            raise  # Do not misreport unrelated database failures as duplicates.
+        if existing.title != title:
+            raise HTTPException(409, "Idempotency-Key already used for a different title") from None
+        return existing.response, True
+    except Exception:
+        db.rollback()
+        raise</code></pre>
         </div>
         <p class="small-note">
-          Excerpt from app/main.py. A database query is performed before the
-          readiness response is returned.
+          Exact create_once() excerpt from commit 18f6e6d. A unique key
+          arbitrates competing requests in the database. Replays return the
+          original creation receipt, including after a job changes or is deleted.
         </p>
       </section>
       <section class="section shell case-section" id="limits">
@@ -395,15 +436,17 @@
         <div class="case-split">
           <div class="prose">
             <p>
-              The repository contains a runnable service, a local observability
-              stack, tests and deployment assets. It demonstrates the
-              integration of application behaviour and operational tooling.
+              The retry contract is verified with SQLite, PostgreSQL and a
+              browser simulation of a lost response. The application stores
+              job states; it does not execute background jobs or guarantee
+              exactly-once effects in external systems.
             </p>
             <p>
-              The collector uses a debug exporter. Persistent trace storage,
-              authentication, migrations, SLO alerting and a staged rollback
-              pipeline remain extensions. Kubernetes manifests are deployment
-              definitions; they do not establish a production operating history.
+              Browser keys are kept in memory and are lost on reload. Stored
+              receipts have no expiry or user scope. Authentication, migrations
+              and retention policy remain extensions. The collector uses a
+              debug exporter; the local stack and Kubernetes manifests
+              demonstrate configuration, without a production operating history.
             </p>
           </div>
           <details class="technical-details">
@@ -411,16 +454,16 @@
               Implementation history <span aria-hidden="true">+</span>
             </summary>
             <p>
-              The original integration notes record workflow setup, npm cache
-              configuration, Ruff findings and Python import-path fixes. The
-              commit and CI history remain available for inspection.
+              The retry design documents the failure scenario, request
+              contract, storage choices and limitations. Commit and CI history
+              make the implementation and checks inspectable.
             </p>
             <a
               class="text-link"
-              href="https://github.com/tefik-aliu/service-observability-lab/commits/main"
+              href="https://github.com/tefik-aliu/service-observability-lab/blob/18f6e6da090982d341ee03bba0defb7539d5445a/docs/retrying-job-creation.md"
               rel="noopener noreferrer"
               target="_blank"
-              >Commit history<span aria-hidden="true"> ↗</span></a
+              >Retry contract<span aria-hidden="true"> ↗</span></a
             ><a
               class="text-link"
               href="https://github.com/tefik-aliu/service-observability-lab/actions"
